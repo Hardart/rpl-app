@@ -1,0 +1,28 @@
+$global-color:                       #363232 !default;
+$global-inverse-color:               #fff !default;
+$inverse-global-color:               rgba($global-inverse-color, 0.8) !default;
+$inverse-global-color-mode:          light !default;
+
+$light:                              #f2f2f2 !default;
+$dark:                               #2e2e2e !default;
+
+$primary:                            #ffcb9a !default;
+$secondary:                          #2c3531 !default;
+$success:                            #116466 !default;
+$warning:                            #d9b08c !default;
+$muted:                              #d1e8e2 !default;
+$danger:                             #9d3a3a !default;
+
+
+
+$theme-colors: (
+  primary:     $primary,
+  secondary:   $secondary,
+  success:     $success,
+  warning:     $warning,
+  light:       $light,
+  dark:        $dark,
+  danger:      $danger,
+) !default;
+
+

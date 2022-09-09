@@ -1,0 +1,41 @@
+.bet-card {
+   @include display-flex(column);
+   position: relative;
+   width: 100%;
+   margin-bottom: 15px;
+   background-color: $light;
+   border-radius: 18px;
+   box-shadow: 0 4px 7px hsla(153, 9%, 19%, 0.2);
+   overflow: hidden;
+
+   &__header {
+      margin-top: 15px;
+      font-size: 1rem;
+      text-align: center;
+   }
+   &__body {
+      @include display-flex();
+      justify-content: space-around;
+      flex-wrap: nowrap;
+      flex-grow: 1;
+   }
+
+   &__footer {
+      text-align: center;
+   }
+
+   &__status {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%) translateY(-5px);
+      white-space: nowrap;
+      writing-mode: vertical-lr;
+
+      .rotate-180 {
+         transform: rotate(180deg);
+         
+         
+      }
+   }
+}

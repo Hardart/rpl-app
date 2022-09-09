@@ -1,0 +1,62 @@
+### ANY
+GET   http://localhost:80/any
+Content-Type: application/json
+
+### ALL
+GET   http://localhost:80/all
+Content-Type: application/json
+
+### REIGISTRATION
+POST  http://localhost:80/registration
+Content-Type: application/json
+
+{
+   "email": "admin@gmail.com",
+   "password": "134679",
+   "name": "Факул",
+   "last_name": "Факулов"
+}
+
+### LOGIN
+POST  http://localhost:80/login
+Content-Type: application/json
+
+{
+   "email": "admin@chatpnz.ru",
+   "password": "134679"
+}
+
+### CHECK
+GET   http://localhost:80/check
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InBsYXllciIsImlhdCI6MTY2MTk3NzE1OSwiZXhwIjoxNjY0NTY5MTU5fQ.qraDePjgKZD6VDoXTjzcm2iF7edDysgRUui-d-saSkc
+
+### NEW BET
+POST  http://localhost:80/new-bet
+Content-Type: application/json
+
+{
+   "email": "admin@chatpnz.ru",
+   "password": "134679"
+}
+
+
+### ALL BET
+GET  http://localhost:80/all-bets
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InN1cGVyLWFkbWluIiwiYmV0cyI6WzEzOTEwNzMsMTM5MTA3NiwxMzkxMDc1LDEzOTEwNjksMTM5MTA3MiwxMzkxMDcwLDEzOTEwNzEsMTM5MTA3NCwxMzkxMDgyLDEzOTEwODQsMTM5MTA3OF0sInBvaW50cyI6NSwiaWF0IjoxNjYyNTY4NDA1LCJleHAiOjE2NjUxNjA0MDV9.Bwvfprk-qjL7tAHmyJpwLhAk5bNSW47RIY4aAkADwF0
+
+{
+   "email": "admin@chatpnz.ru",
+   "password": "134679"
+}
+
+### ALL PLAYERS
+GET  http://localhost:80/all-players
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InN1cGVyLWFkbWluIiwiYmV0cyI6WzEzOTEwNzMsMTM5MTA3NiwxMzkxMDc1LDEzOTEwNjksMTM5MTA3MiwxMzkxMDcwLDEzOTEwNzEsMTM5MTA3NCwxMzkxMDgyLDEzOTEwODQsMTM5MTA3OF0sInBvaW50cyI6NSwiaWF0IjoxNjYyNTY4NDA1LCJleHAiOjE2NjUxNjA0MDV9.Bwvfprk-qjL7tAHmyJpwLhAk5bNSW47RIY4aAkADwF0
+
+{
+   "email": "admin@chatpnz.ru",
+   "password": "134679"
+}

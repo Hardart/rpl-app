@@ -1,0 +1,29 @@
+import type { Event } from '@/assets/ts/interfaces/event-interface'
+import instance from './instance'
+
+interface Box {
+   next: Event[]
+   past: Event[]
+}
+
+export default {
+   async all() {
+      const { data } = await instance.get<Box>('/mongo')
+      return data
+   },
+
+   async update() {
+      const { data } = await instance.get('/all')
+      return data
+   },
+
+   async past() {
+      const { data } = await instance.get<Event[]>('/past')
+      return data
+   },
+
+   async future() {
+      const { data } = await instance.get<Event[]>('/future')
+      return data
+   },
+}

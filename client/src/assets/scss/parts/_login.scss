@@ -1,0 +1,37 @@
+.login {
+
+   display: grid;
+   place-items: center;
+
+
+   &__panel {
+      width: 100%;
+      padding: 15px 30px 25px;
+      border-radius: 12px;
+      background-color: #79cff1;
+      text-align: center;
+
+      h2 {
+         margin-bottom: 10px;
+      }
+
+      form {
+         display: flex;
+         flex-direction: column;
+
+         & > * {
+            border: none;
+            outline: none;
+            font-size: 18px;
+            padding: 8px 15px;
+            border-radius: 8px;
+         }
+
+         input {
+            margin-bottom: 10px;
+         }
+
+         
+      }
+   }
+}

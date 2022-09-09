@@ -1,0 +1,84 @@
+nav {
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   z-index: 99;
+}
+
+.nav-list {
+   display: flex;
+   justify-content: space-around;
+   padding: 10px 0;
+   list-style: none;
+   background-color: $secondary;
+   
+   
+
+   &__item {
+      @include display-flex;
+      @include justify-align-all(center);
+      padding: 5px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      
+      svg {
+         color: $muted;
+
+         &:hover {
+            color: $primary;
+         }
+
+         &:active {
+            color: $warning;
+         }
+      }
+
+      a {
+         text-transform: uppercase;
+         text-decoration: none;
+
+         &.active {
+            color: $primary;
+            position: relative;
+            border: none;
+
+            polygon,
+            svg,
+            rect {
+               color: $primary;
+            }
+         }
+
+         img {
+            width: 30px;
+         }
+      }
+   }
+}
+
+.settings-nav {
+   padding: 40px;
+   font-size: 1.1rem;
+
+   &__title {
+      padding-left: 10px;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      border-bottom: solid 1px $primary;
+      text-transform: uppercase;
+      opacity: 0.5;
+      cursor: default;
+   }
+
+   &__item {
+      padding: 5px 10px;
+      cursor: pointer;
+
+      &:hover {
+         @include set-colors($primary, 10%);
+         
+      }
+   }
+}
