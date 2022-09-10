@@ -45,7 +45,7 @@ class BetService {
       const playerBets = await Bet.findOne({ player_email: email })
       const player = {
          data: playerData,
-         bets: playerBets.player_bets,
+         bets: playerBets?.player_bets,
       }
       return player
    }
