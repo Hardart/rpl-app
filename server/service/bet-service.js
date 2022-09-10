@@ -25,7 +25,8 @@ class BetService {
 
    async getAllMyBets(email) {
       const player = await this.#getPlayerInfo(email)
-      if (player.bets) return { bets: [], points: 0 }
+
+      if (!player.bets) return { bets: [], points: 0 }
       const finishedEvents = await eventsService.finished()
       this.#updateBetStatus(player.bets, player.data, finishedEvents)
 
@@ -43,6 +44,7 @@ class BetService {
    async #getPlayerInfo(email) {
       const playerData = await User.findOne({ email })
       const playerBets = await Bet.findOne({ player_email: email })
+      console.log(playerBets)
       const player = {
          data: playerData,
          bets: playerBets?.player_bets,

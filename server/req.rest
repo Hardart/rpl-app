@@ -71,16 +71,6 @@ Content-Type: application/json
    "password": "134679"
 }
 
-### SERVER - registration
-POST https://rpl-app-production.up.railway.app/registration
-Content-Type: application/json
-
-{
-   "email": "admin@gmail.com",
-   "password": "134679",
-   "name": "Факул",
-   "last_name": "Факулов"
-}
 
 
 ### SERVER - my bets
