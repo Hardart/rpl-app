@@ -52,11 +52,50 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 }
 
 ### ALL PLAYERS
-GET  http://localhost:80/all-players
+GET  https://rpl-app-production.up.railway.app/all-players
+
+
+
+
+
+### SERVER - players
+GET  https://rpl-app-production.up.railway.app/all-players
+
+
+### SERVER - login
+POST https://rpl-app-production.up.railway.app/login
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InN1cGVyLWFkbWluIiwiYmV0cyI6WzEzOTEwNzMsMTM5MTA3NiwxMzkxMDc1LDEzOTEwNjksMTM5MTA3MiwxMzkxMDcwLDEzOTEwNzEsMTM5MTA3NCwxMzkxMDgyLDEzOTEwODQsMTM5MTA3OF0sInBvaW50cyI6NSwiaWF0IjoxNjYyNTY4NDA1LCJleHAiOjE2NjUxNjA0MDV9.Bwvfprk-qjL7tAHmyJpwLhAk5bNSW47RIY4aAkADwF0
 
 {
    "email": "admin@chatpnz.ru",
    "password": "134679"
 }
+
+### SERVER - registration
+POST https://rpl-app-production.up.railway.app/registration
+Content-Type: application/json
+
+{
+   "email": "admin@gmail.com",
+   "password": "134679",
+   "name": "Факул",
+   "last_name": "Факулов"
+}
+
+
+### SERVER - my bets
+GET  https://rpl-app-production.up.railway.app/my-bets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiaWF0IjoxNjYyODA0Njg0LCJleHAiOjE2NjUzOTY2ODR9.flGU4z-mz7Gf2OjMPtji2JIROylq1GNsudGO-yLZMYE
+
+### SERVER - new bet
+POST  https://rpl-app-production.up.railway.app/new-bet
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiaWF0IjoxNjYyODA0Njg0LCJleHAiOjE2NjUzOTY2ODR9.flGU4z-mz7Gf2OjMPtji2JIROylq1GNsudGO-yLZMYE 
+
+[
+   {
+      "event_id": 000000,
+      "home_score": 0,
+      "away_score": 0,
+      "status": false
+   }
+]
