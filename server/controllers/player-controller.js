@@ -29,8 +29,8 @@ class PlayerController {
          const bet = req.body
          console.log(bet)
          const { email } = req.user
-         const { token, bets } = await betService.makeNewBet(email, bet)
-         return res.status(200).json({ token, bets })
+         // const { token, bets } = await betService.makeNewBet(email, bet)
+         return res.status(200).json('{ token, bets }')
       } catch (error) {
          next(error)
       }
