@@ -10,18 +10,17 @@ class BetService {
 
    async makeNewBet(email, newBets) {
       const player = await this.#getPlayerInfo(email)
-      let bets = []
+      let myBets = []
       if (player.bets.length > 0) {
-         bets = [...player.bets, ...newBets]
+         myBets = [...player.bets, ...newBets]
          await this.#addBetToPlayerBets(email, bets)
       } else {
-         bets = await this.#newBet(email, newBets)
+         myBets = await this.#newBet(email, newBets)
       }
 
-      const { name, last_name, role, points } = await this.#addBetIDToPlayerInfo(player.data, newBets)
-      console.log({ name, last_name, role, points })
+      const { name, last_name, role, bets, points } = await this.#addBetIDToPlayerInfo(player.data, newBets)
       const token = tokenService.generateToken({ email, name, last_name, role, bets, points })
-      return { token, bets }
+      return { token, bets: myBets }
    }
 
    async getAllMyBets(email) {
