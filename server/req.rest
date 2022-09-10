@@ -86,7 +86,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
    {
       "event_id": 2252355,
       "home_score": "1",
-      "away_score": "2",
+      "away_score": "4",
       "status": false,
       "winner_code": 0,
       "bet_code": 2

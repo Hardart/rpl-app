@@ -92,7 +92,7 @@ class BetService {
             })
          }
       })
-   }
+   } // NOT WORK YET!!!
 
    #countPoints(bet, event, points) {
       bet.winner_code = event.winner_code
