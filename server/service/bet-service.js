@@ -8,12 +8,12 @@ class BetService {
       return bets
    }
 
-   async makeNewBet(email, betArray) {
-      const { player, playerBets } = await this.#getPlayerAndBets(email)
-      const data = playerBets ? await this.#addBetToPlayerBets(playerBets, betArray) : await this.#newBet(email, betArray)
-      const { name, last_name, role } = await this.#addBetIDToPlayerInfo(player, betArray)
-      const token = tokenService.generateToken({ email, name, last_name, role, bets: player.bets, points: player.points })
-      return { token, bets: data.player_bets }
+   async makeNewBet(email, newBets) {
+      const player = await this.#getPlayerInfo(email)
+      const bets = player.bets.length > 0 ? await this.#addBetToPlayerBets(player.bets, newBets) : await this.#newBet(email, newBets)
+      const { name, last_name, role } = await this.#addBetIDToPlayerInfo(player, newBets)
+      const token = tokenService.generateToken({ email, name, last_name, role, bets, points: player.data.points })
+      return { token, bets }
    }
 
    async getAllMyBets(email) {
@@ -25,10 +25,14 @@ class BetService {
       return { bets: playerBets.player_bets, points: player.points }
    }
 
-   async #getPlayerAndBets(email) {
-      const player = await User.findOne({ email })
+   async #getPlayerInfo(email) {
+      const playerData = await User.findOne({ email })
       const playerBets = await Bet.findOne({ player_email: email })
-      return { player, playerBets }
+      const player = {
+         data: playerData,
+         bets: playerBets.player_bets,
+      }
+      return player
    }
 
    async #getAllBets() {
@@ -42,17 +46,15 @@ class BetService {
       })
    }
 
-   async #addBetToPlayerBets(playerBets, bet) {
-      playerBets.player_bets = [...playerBets.player_bets, ...bet]
-      await playerBets.save()
-      return playerBets
+   async #addBetToPlayerBets(bets, bet) {
+      bets = [...bets, ...bet]
+      return bets
    }
 
    async #addBetIDToPlayerInfo(player, betArray) {
       betArray.forEach((bet) => {
-         player.bets.push(bet.event_id)
+         player.data.bets.push(bet.event_id)
       })
-      await player.save()
       return player
    }
 
