@@ -18,8 +18,9 @@ class BetService {
          bets = await this.#newBet(email, newBets)
       }
 
-      const { name, last_name, role } = await this.#addBetIDToPlayerInfo(player.data, newBets)
-      const token = tokenService.generateToken({ email, name, last_name, role, bets, points: player.data.points })
+      const { name, last_name, role, points } = await this.#addBetIDToPlayerInfo(player.data, newBets)
+      console.log({ name, last_name, role, points })
+      const token = tokenService.generateToken({ email, name, last_name, role, bets, points })
       return { token, bets }
    }
 
@@ -63,6 +64,7 @@ class BetService {
       betArray.forEach((bet) => {
          player.bets.push(bet.event_id)
       })
+      await User.findOneAndUpdate({ email: player.email }, { bets: player.bets })
       return player
    }
 
