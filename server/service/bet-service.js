@@ -34,7 +34,8 @@ class BetService {
 
    async deleteAllBet(email) {
       await Bet.findOneAndRemove({ player_email: email })
-      const { name, last_name, role, bets, points } = await User.findOneAndUpdate({ email }, { bets: [], points: 0 }, { new: true })
+      const player = await User.findOneAndUpdate({ email }, { bets: [], points: 0 }, { new: true })
+      const { name, last_name, role, bets, points } = player
       const token = tokenService.generateToken({ email, name, last_name, role, bets, points })
       return token
    }
