@@ -98,6 +98,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
       "away_score": "0",
       "status": false,
       "winner_code": 0,
-      " bet_code": 0
+      "bet_code": 0
    }
 ]
