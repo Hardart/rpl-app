@@ -32,6 +32,13 @@ class BetService {
       return { bets: player.bets, points: player.data.points }
    }
 
+   async deleteAllBet(email) {
+      await Bet.findOneAndRemove({ player_email: email })
+      const { name, last_name, role, bets, points } = await User.findOneAndUpdate({ email }, { bets: [], points: 0 }, { new: true })
+      const token = tokenService.generateToken({ email, name, last_name, role, bets, points })
+      return { token }
+   }
+
    async #getPlayerInfo(email) {
       const playerData = await User.findOne({ email })
       const playerBets = await Bet.findOne({ player_email: email })
@@ -60,9 +67,14 @@ class BetService {
    }
 
    async #addBetIDToPlayerInfo(player, betArray) {
-      betArray.forEach((bet) => {
-         player.bets.push(bet.event_id)
-      })
+      if (betArray.length == 0) {
+         player.bets = []
+      } else {
+         betArray.forEach((bet) => {
+            player.bets.push(bet.event_id)
+         })
+      }
+
       await User.findOneAndUpdate({ email: player.email }, { bets: player.bets })
       return player
    }

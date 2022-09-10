@@ -55,6 +55,15 @@ class PlayerController {
       }
    }
 
+   async deleteMyBets(req, res, next) {
+      try {
+         const token = await betService.deleteAllBets()
+         return res.status(200).json({ token })
+      } catch (error) {
+         next(error)
+      }
+   }
+
    async getPlayers(req, res, next) {
       try {
          const players = await playerService.getAll()
