@@ -13,13 +13,13 @@ class BetService {
       let myBets = []
       if (player.bets.length > 0) {
          myBets = [...player.bets, ...newBets]
-         await this.#addBetToPlayerBets(email, bets)
+         await this.#addBetToPlayerBets(email, myBets)
       } else {
          myBets = await this.#newBet(email, newBets)
       }
-      const updatePlayer = await this.#addBetIDToPlayerInfo(player.data, newBets)
-      console.log(updatePlayer)
-      // const token = tokenService.generateToken({ email, name, last_name, role, bets, points })
+      const { name, last_name, role, bets, points } = await this.#addBetIDToPlayerInfo(player.data, newBets)
+
+      const token = tokenService.generateToken({ email, name, last_name, role, bets, points })
       return { token, bets: myBets }
    }
 
