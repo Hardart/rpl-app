@@ -33,7 +33,7 @@ class BetService {
    }
 
    async deleteAllBet(email) {
-      const res = await Bet.findOneAndDelete({ player_email: email })
+      const res = await User.findOneAndUpdate({ player_email: email }, { player_bets: [] }, { new: true })
       console.log(res)
       const player = await User.findOneAndUpdate({ email }, { bets: [], points: 0 }, { new: true })
       console.log(player)
