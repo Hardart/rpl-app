@@ -94,8 +94,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 [
    {
       "event_id": 000000,
-      "home_score": 0,
-      "away_score": 0,
-      "status": false
+      "home_score": "0",
+      "away_score": "0",
+      "status": false,
+      "winner_code": 0,
+      " bet_code": 0
    }
 ]

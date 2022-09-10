@@ -11,18 +11,18 @@ class BetService {
    async makeNewBet(email, newBets) {
       const player = await this.#getPlayerInfo(email)
       const bets = player.bets.length > 0 ? await this.#addBetToPlayerBets(player.bets, newBets) : await this.#newBet(email, newBets)
-      const { name, last_name, role } = await this.#addBetIDToPlayerInfo(player, newBets)
+      const { name, last_name, role } = await this.#addBetIDToPlayerInfo(player.data, newBets)
       const token = tokenService.generateToken({ email, name, last_name, role, bets, points: player.data.points })
       return { token, bets }
    }
 
    async getAllMyBets(email) {
-      const { player, playerBets } = await this.#getPlayerAndBets(email)
-      if (!playerBets) return { bets: [], points: 0 }
+      const player = await this.#getPlayerAndBets(email)
+      if (player.bets.length == 0) return { bets: [], points: 0 }
       const finishedEvents = await eventsService.finished()
-      await this.#updateBetStatus(playerBets, player, finishedEvents)
+      this.#updateBetStatus(player.bets, player.data, finishedEvents)
 
-      return { bets: playerBets.player_bets, points: player.points }
+      return { bets: player.bets, points: player.data.points }
    }
 
    async #getPlayerInfo(email) {
@@ -40,7 +40,7 @@ class BetService {
    }
 
    async #newBet(email, bet) {
-      return await Bet.create({
+      const player = await Bet.create({
          player_email: email,
          player_bets: bet,
       })
@@ -53,13 +53,13 @@ class BetService {
 
    async #addBetIDToPlayerInfo(player, betArray) {
       betArray.forEach((bet) => {
-         player.data.bets.push(bet.event_id)
+         player.bets.push(bet.event_id)
       })
       return player
    }
 
    async #updateBetStatus(bets, player, finishedEvents) {
-      bets.player_bets.forEach((bet) => {
+      bets.forEach((bet) => {
          if (!bet.status) {
             finishedEvents.find((event) => {
                if (event.id == bet.event_id) {
@@ -68,8 +68,6 @@ class BetService {
             })
          }
       })
-      await bets.save()
-      await player.save()
    }
 
    #countPoints(bet, event, points) {

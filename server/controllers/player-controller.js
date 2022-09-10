@@ -23,6 +23,7 @@ class PlayerController {
          next(error)
       }
    }
+
    async makeNewBet(req, res, next) {
       try {
          const bet = req.body
