@@ -94,7 +94,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 
 [
    {
-      "event_id": 225,
+      "event_id": 2255,
       "home_score": "1",
       "away_score": "2",
       "status": false,
@@ -102,3 +102,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
       "bet_code": 2
    }
 ]
+
+
+### SERVER - delete my bets
+GET  https://rpl-app-production.up.railway.app/delete-my-bets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiaWF0IjoxNjYyODA0Njg0LCJleHAiOjE2NjUzOTY2ODR9.flGU4z-mz7Gf2OjMPtji2JIROylq1GNsudGO-yLZMYE
