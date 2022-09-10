@@ -10,7 +10,8 @@ class BetService {
 
    async makeNewBet(email, newBets) {
       const player = await this.#getPlayerInfo(email)
-      const bets = player.bets.length > 0 ? await this.#addBetToPlayerBets(player.bets, newBets) : await this.#newBet(email, newBets)
+      console.log(player)
+      const bets = player.bets.length > 0 ? this.#addBetToPlayerBets(player.bets, newBets) : this.#newBet(email, newBets)
       const { name, last_name, role } = await this.#addBetIDToPlayerInfo(player.data, newBets)
       const token = tokenService.generateToken({ email, name, last_name, role, bets, points: player.data.points })
       return { token, bets }
@@ -44,6 +45,7 @@ class BetService {
          player_email: email,
          player_bets: bet,
       })
+      return player.player_bets
    }
 
    async #addBetToPlayerBets(bets, bet) {
