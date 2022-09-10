@@ -17,7 +17,6 @@ class BetService {
       } else {
          myBets = await this.#newBet(email, newBets)
       }
-
       const { name, last_name, role, bets, points } = await this.#addBetIDToPlayerInfo(player.data, newBets)
       const token = tokenService.generateToken({ email, name, last_name, role, bets, points })
       return { token, bets: myBets }
