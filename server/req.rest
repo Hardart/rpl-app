@@ -91,13 +91,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 POST  https://rpl-app-production.up.railway.app/new-bet
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiaWF0IjoxNjYyODA0Njg0LCJleHAiOjE2NjUzOTY2ODR9.flGU4z-mz7Gf2OjMPtji2JIROylq1GNsudGO-yLZMYE 
 
-[
-   {
-      "event_id": 000000,
-      "home_score": "0",
-      "away_score": "0",
-      "status": false,
-      "winner_code": 0,
-      "bet_code": 0
-   }
-]
+{
+   ["hello"]
+}

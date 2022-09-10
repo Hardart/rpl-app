@@ -27,6 +27,7 @@ class PlayerController {
    async makeNewBet(req, res, next) {
       try {
          const bet = req.body
+         console.log(bet)
          const { email } = req.user
          const { token, bets } = await betService.makeNewBet(email, bet)
          return res.status(200).json({ token, bets })
