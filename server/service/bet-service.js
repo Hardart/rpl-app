@@ -11,7 +11,7 @@ class BetService {
    async makeNewBet(email, newBets) {
       const player = await this.#getPlayerInfo(email)
       let myBets = []
-      if (player.bets.length > 0) {
+      if (player.bets) {
          myBets = [...player.bets, ...newBets]
          await this.#addBetToPlayerBets(email, myBets)
       } else {
