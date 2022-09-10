@@ -17,5 +17,6 @@ router.post('/new-bet', authCheck, playerController.makeNewBet)
 router.get('/my-bets', authCheck, playerController.getMyBets)
 router.get('/all-bets', authCheck, superAdminCheck, playerController.getAllBets)
 router.get('/all-players', playerController.getPlayers)
+router.get('/delete-my-bets', authCheck, playerController.deleteMyBets)
 
 module.exports = router
