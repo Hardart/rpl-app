@@ -6,3 +6,10 @@
       <APastEvents />
    </div>
 </template>
+
+<style lang="scss" scoped>
+   .round-section {
+      display: flex;
+      flex-direction: column-reverse;
+   }
+</style>

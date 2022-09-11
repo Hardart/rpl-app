@@ -1,11 +1,3 @@
-### ANY
-GET   http://localhost:80/any
-Content-Type: application/json
-
-### ALL
-GET   http://localhost:80/all
-Content-Type: application/json
-
 ### REIGISTRATION
 POST  http://localhost:80/registration
 Content-Type: application/json
@@ -22,7 +14,7 @@ POST  http://localhost:80/login
 Content-Type: application/json
 
 {
-   "email": "admin@chatpnz.ru",
+   "email": "admin@gmail.com",
    "password": "134679"
 }
 
@@ -31,20 +23,10 @@ GET   http://localhost:80/check
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InBsYXllciIsImlhdCI6MTY2MTk3NzE1OSwiZXhwIjoxNjY0NTY5MTU5fQ.qraDePjgKZD6VDoXTjzcm2iF7edDysgRUui-d-saSkc
 
-### NEW BET
-POST  http://localhost:80/new-bet
-Content-Type: application/json
-
-{
-   "email": "admin@chatpnz.ru",
-   "password": "134679"
-}
-
-
 ### ALL BET
 GET  http://localhost:80/all-bets
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InN1cGVyLWFkbWluIiwiYmV0cyI6WzEzOTEwNzMsMTM5MTA3NiwxMzkxMDc1LDEzOTEwNjksMTM5MTA3MiwxMzkxMDcwLDEzOTEwNzEsMTM5MTA3NCwxMzkxMDgyLDEzOTEwODQsMTM5MTA3OF0sInBvaW50cyI6NSwiaWF0IjoxNjYyNTY4NDA1LCJleHAiOjE2NjUxNjA0MDV9.Bwvfprk-qjL7tAHmyJpwLhAk5bNSW47RIY4aAkADwF0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiYmV0cyI6WzIyNTIzNTUsMjI1MjM1NV0sInBvaW50cyI6MCwiaWF0IjoxNjYyODkwOTk1LCJleHAiOjE2NjU0ODI5OTV9.ZjkSGJoLnIWsiFi9tWVTzOrFXbxcezbHOth7Kgb8C_A
 
 {
    "email": "admin@chatpnz.ru",
@@ -74,19 +56,19 @@ Content-Type: application/json
 
 
 ### SERVER - my bets
-GET  https://rpl-app-production.up.railway.app/my-bets
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiaWF0IjoxNjYyODA0Njg0LCJleHAiOjE2NjUzOTY2ODR9.flGU4z-mz7Gf2OjMPtji2JIROylq1GNsudGO-yLZMYE
+GET   http://localhost:80/my-bets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiYmV0cyI6WzIyNTIzNTUsMTM5MTA3OSwxMzkxMDgzLDEzOTEwNzgsMTM5MTA4NCwxMzkxMDgyXSwicG9pbnRzIjowLCJpYXQiOjE2NjI4OTY2MTYsImV4cCI6MTY2NTQ4ODYxNn0.-CcacECExNZqYF7PJ0G59SY9lru-A8Ov_Rj02sFb6Xo
 
 ### SERVER - new bet
-POST  https://rpl-app-production.up.railway.app/new-bet
+POST   http://localhost:80/new-bet
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiaWF0IjoxNjYyODA0Njg0LCJleHAiOjE2NjUzOTY2ODR9.flGU4z-mz7Gf2OjMPtji2JIROylq1GNsudGO-yLZMYE 
 
 [
    {
       "event_id": 2252355,
-      "home_score": "1",
-      "away_score": "4",
+      "home_score": 1,
+      "away_score": 0,
       "status": false,
       "winner_code": 0,
       "bet_code": 2
@@ -95,5 +77,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 
 
 ### SERVER - delete my bets
-GET https://rpl-app-production.up.railway.app/delete-my-bets
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiaWF0IjoxNjYyODA0Njg0LCJleHAiOjE2NjUzOTY2ODR9.flGU4z-mz7Gf2OjMPtji2JIROylq1GNsudGO-yLZMYE
+GET  http://localhost:80/delete-my-bets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiYmV0cyI6WzIyNTIzNTUsMTM5MTA3OSwxMzkxMDgzLDEzOTEwNzgsMTM5MTA4NCwxMzkxMDgyXSwicG9pbnRzIjowLCJpYXQiOjE2NjI4OTY2MTYsImV4cCI6MTY2NTQ4ODYxNn0.-CcacECExNZqYF7PJ0G59SY9lru-A8Ov_Rj02sFb6Xo

@@ -2,7 +2,7 @@
    import ANextEvents from '@/components/A-NextEvents.vue'
 </script>
 <template>
-   <div class="round-section">
+   <div>
       <Suspense>
          <!-- main content -->
          <ANextEvents />

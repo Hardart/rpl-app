@@ -1,11 +1,15 @@
 <template>
-   <div class="grid childs-w-100">
-      <template v-for="event in events">
-         <div>
-            <ABetCard :event="event" :round="event.round" :show-bet="false" />
-         </div>
-      </template>
-      <div v-intersection="$emit('more')" class="observer"></div>
+   <div v-for="round in events[0].round">
+      <h1>Раунд {{ round }}</h1>
+      <div class="grid childs-w-100">
+         <template v-for="event in events">
+            <div v-if="event.round == round">
+               <ABetCard :event="event" :show-bet="false" />
+            </div>
+         </template>
+         <div v-intersection="$emit('more')" class="observer"></div>
+      </div>
+      <hr />
    </div>
 </template>
 <script setup lang="ts">
@@ -22,8 +26,11 @@
    .observer {
       display: block;
       width: 100%;
-      height: 30px;
+      height: 10px;
       margin-left: 15px;
-      margin-bottom: 30px;
+   }
+
+   hr {
+      margin-bottom: 15px;
    }
 </style>

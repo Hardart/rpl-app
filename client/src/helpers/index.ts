@@ -49,16 +49,16 @@ export function teamsBundle(event: Event, bet: NewBet | undefined): Teams {
 
 export function fixEventTime(eventDate: number): number {
    let hour = new Date(eventDate).getHours()
-   let date = new Date(eventDate).setHours(hour + 2)
-   let minutes = new Date(date).getMinutes()
-   date = new Date(date).setMinutes(minutes + 48)
+   let date = new Date(eventDate).setHours(hour + 3)
+   // let minutes = new Date(date).getMinutes()
+   // date = new Date(date).setMinutes(minutes + 13)
 
    return new Date(date).valueOf()
 }
 
 export function eventWithNoBets(nextRoundEvents: Event[], playerBets: number[] | undefined): NewBet[] {
    if (!playerBets) return []
-   const pastEventsWithNoBet = nextRoundEvents.filter((event) => !checkDateOfGame(event.start_at) && !isPlayerMadeBet(event.id, playerBets))
+   const pastEventsWithNoBet: Event[] = nextRoundEvents.filter((event) => !checkDateOfGame(event.start_at) && !isPlayerMadeBet(event.id, playerBets))
    let defaultBets: NewBet[] = []
    pastEventsWithNoBet.forEach((event) => defaultBets.push(createEmptyBet(event.id)))
    return defaultBets

@@ -18,11 +18,12 @@ export const useBetStore = defineStore('bet', {
          usePlayerStore().setPlayerPoints(res.points)
          this.myBets = res.bets
       },
+
       async saveBets(passBets: NewBet[]) {
          const { token, bets } = await playerAPI.makeBet(passBets)
          JWT.setToken(token)
          this.myBets = bets
-         if (!JWT.accessToken) return useAlertStore().addAlert('Предупреждение', 'Проблемы с токеном игрока при сохранении ставок')
+         if (!JWT.accessToken) return useAlertStore().addAlert('Ошибка', 'Проблемы с токеном игрока при сохранении ставок')
          usePlayerStore().player = JWT.getPlayerInfo(JWT.accessToken)
       },
 

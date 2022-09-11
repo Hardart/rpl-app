@@ -6,8 +6,8 @@ const Match = Schema({
    away_team: String,
    home_team_logo: String,
    away_team_logo: String,
-   home_score: { type: String, default: `-` },
-   away_score: { type: String, default: `-` },
+   home_score: Number,
+   away_score: Number,
    winner_code: Number,
    start_at: Number,
    status: String,
@@ -16,8 +16,8 @@ const Match = Schema({
 
 const PlayerBet = new Schema({
    event_id: Number,
-   home_score: String,
-   away_score: String,
+   home_score: Number,
+   away_score: Number,
    winner_code: Number,
    bet_code: Number,
    status: {

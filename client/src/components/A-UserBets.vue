@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
    import ATeamCard from '../components/A-TeamCard.vue'
-   import { useEventsStore, useBetStore, usePlayerStore, useAlertStore } from '@/stores'
+   import { useEventsStore, useBetStore, usePlayerStore } from '@/stores'
    import { checkBetStatus, eventWithNoBets } from '@/helpers'
 
    const betStore = useBetStore()
@@ -24,10 +24,10 @@
    const noBetEvents = eventWithNoBets(eventStore.next, usePlayerStore().player?.bets)
    if (noBetEvents?.length > 0) {
       await useBetStore().saveBets(noBetEvents)
-      useAlertStore().addAlert('Информация', 'Данных о прошедших ставках пока нет')
+      await betStore.loadBets()
    }
-   if (betStore.myBets.length < 1) await betStore.loadBets()
-   if (eventStore.next.length < 1) await eventStore.loadNextRound()
+   if (betStore.myBets.length == 0) await betStore.loadBets()
+   if (eventStore.next.length == 0) await eventStore.loadNextRound()
    const event = (id: number) => eventStore.getEventByID(id)
    const score = (id: number) => eventStore.getEventScore(id)
 </script>

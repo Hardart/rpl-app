@@ -1,7 +1,7 @@
 <template>
    <div class="teams">
-      <ATeamCardItem :team="awayTeam" :show-bet-score="showBetScore" />
       <ATeamCardItem :team="homeTeam" :show-bet-score="showBetScore" />
+      <ATeamCardItem :team="awayTeam" :show-bet-score="showBetScore" />
    </div>
 </template>
 
