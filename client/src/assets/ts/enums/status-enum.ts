@@ -1,6 +1,7 @@
 export enum EventStatus {
    notStarted = 'notstarted',
    finished = 'finished',
+   inprogress = 'inprogress',
 }
 
 export enum EventSortBy {
