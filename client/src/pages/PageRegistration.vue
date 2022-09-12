@@ -8,7 +8,7 @@
             <input v-model="authData.last_name" type="text" placeholder="Фамилия" name="last_name" />
             <input v-model="authData.password" type="password" placeholder="Пароль" name="password" />
             <input v-model="authData.password_confirm" type="password" placeholder="Повторите пароль" name="password_check" />
-            <button type="submit" @click.prevent="tryRegistration">Зарегистрироваться</button>
+            <button class="btn btn-primary" type="submit" @click.prevent="tryRegistration">Зарегистрироваться</button>
          </form>
          <router-link to="login">войти</router-link>
       </div>

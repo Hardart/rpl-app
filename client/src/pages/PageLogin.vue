@@ -5,7 +5,7 @@
          <form action="#">
             <input v-model="authData.email" type="text" placeholder="Email" name="email" />
             <input v-model="authData.password" type="password" placeholder="Пароль" name="password" />
-            <button class="btn" type="submit" @click.prevent="tryLogin">Войти</button>
+            <button class="btn btn-primary" type="submit" @click.prevent="tryLogin">Войти</button>
          </form>
          <router-link to="registration">регистрация</router-link>
       </div>

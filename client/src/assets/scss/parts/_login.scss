@@ -1,5 +1,4 @@
 .login {
-
    display: grid;
    place-items: center;
 
@@ -8,7 +7,8 @@
       width: 100%;
       padding: 15px 30px 25px;
       border-radius: 12px;
-      background-color: #79cff1;
+      color: $light;
+      background-color: $success;
       text-align: center;
 
       h2 {
@@ -32,6 +32,15 @@
          }
 
          
+         
+      }
+      a {
+         color: $primary;
+         text-decoration: none;
+
+         &:hover {
+            color: $warning;
+         }
       }
    }
 }

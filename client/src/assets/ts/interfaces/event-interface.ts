@@ -1,3 +1,4 @@
+export type EventSortBy = 'asc' | 'desc'
 export interface Event {
    id: number
    date: string

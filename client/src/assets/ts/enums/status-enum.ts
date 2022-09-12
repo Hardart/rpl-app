@@ -4,11 +4,6 @@ export enum EventStatus {
    inprogress = 'inprogress',
 }
 
-export enum EventSortBy {
-   asc = 1,
-   desc = 0,
-}
-
 export enum EventStatusLoad {
    finished = 1,
    notstarted = 0,

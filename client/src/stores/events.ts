@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import eventsAPI from '@/api/events-api'
-import type { EventSortBy } from '@/assets/ts/enums/status-enum'
-import type { Event } from '@/assets/ts/interfaces/event-interface'
+import type { Event, EventSortBy } from '@/assets/ts/interfaces/event-interface'
 
 export const useEventsStore = defineStore({
    id: 'events',
@@ -26,6 +25,7 @@ export const useEventsStore = defineStore({
       async loadNextRound() {
          const res = await eventsAPI.future()
          this.next = res
+         this.sortFutureEvents('asc')
          this.all = [...this.all, ...res]
       },
       async loadPastRounds() {
@@ -47,7 +47,7 @@ export const useEventsStore = defineStore({
          this.isLoading = false
       },
       sortFutureEvents(sortBy: EventSortBy) {
-         this.next.sort((a: Event, b: Event) => (sortBy === 1 ? a.round - b.round : b.round - a.round))
+         this.next.sort((a: Event, b: Event) => (sortBy === 'asc' ? a.start_at - b.start_at : b.start_at - a.start_at))
       },
       addMoreFinished(limit: number = 8) {
          this.limit += limit
