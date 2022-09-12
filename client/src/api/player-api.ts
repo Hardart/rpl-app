@@ -11,6 +11,12 @@ interface ResponseData {
    responseStatus: boolean
 }
 
+interface PlayersData {
+   players: Player[]
+   message?: string
+   errors?: string[]
+}
+
 export default {
    async registration(player: Player) {
       const { data } = await instance.post<ResponseData>('/registration', player)
@@ -48,6 +54,10 @@ export default {
 
    async getBets() {
       const { data } = await instance.get<ResponseData>('/my-bets')
+      return data
+   },
+   async getAllPlayers() {
+      const { data } = await instance.get<PlayersData>('/all-players')
       return data
    },
 }

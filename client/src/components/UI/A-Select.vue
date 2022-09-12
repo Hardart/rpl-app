@@ -13,7 +13,7 @@
 <script setup lang="ts">
    import type { Player } from '@/assets/ts/interfaces/player-interface'
    import Icons from '@/features/Icons'
-   import { computed, onMounted, ref } from 'vue'
+   import { ref } from 'vue'
 
    const isOpen = ref(false)
    const changeState = (state: boolean = false) => {
@@ -22,7 +22,7 @@
    }
 
    const props = defineProps<{
-      options: Player[] | null
+      options: Player[]
       modelValue: string
    }>()
 

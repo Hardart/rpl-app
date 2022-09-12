@@ -12,6 +12,7 @@ const promise = new Promise((res) => {
 export const usePlayerStore = defineStore('user', {
    state: () => ({
       player: null as Player | null,
+      players: null as Player[] | null,
    }),
    getters: {
       isLogin: (state) => state.player !== null,
@@ -77,6 +78,15 @@ export const usePlayerStore = defineStore('user', {
       async setNewAdmin(email: string) {
          const { responseStatus, message } = await playerAPI.setNewAdmin(email)
          return { responseStatus, message }
+      },
+
+      async getAllPlayers() {
+         const res = await playerAPI.getAllPlayers()
+         if (res.message) {
+            useAlertStore().addAlert('Ошибка', res.message)
+            return []
+         }
+         return res.players
       },
    },
 })

@@ -68,7 +68,7 @@ class PlayerController {
    async getPlayers(req, res, next) {
       try {
          const players = await playerService.getAll()
-         res.status(200).json(players)
+         res.status(200).json({ players })
       } catch (error) {
          next(error)
       }

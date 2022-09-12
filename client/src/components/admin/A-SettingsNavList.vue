@@ -11,7 +11,9 @@
       <div class="w-expand">
          <div class="settings-content">
             <KeepAlive>
-               <component :is="Content.comp[comp.id]" :name="comp.activeTitle"></component>
+               <Suspense>
+                  <component :is="Content.comp[comp.id]" :name="comp.activeTitle"></component>
+               </Suspense>
             </KeepAlive>
          </div>
       </div>
