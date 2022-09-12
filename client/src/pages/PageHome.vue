@@ -1,15 +1,14 @@
 <template>
-   <h1>Home Page</h1>
-   <h2 v-if="usePlayerStore().isLogin">{{ usePlayerStore().player?.name }}</h2>
-
-   <ul class="tabs">
-      <router-link custom v-slot="{ navigate }" :to="{ name: 'finished' }">
-         <li class="tabs__item" @click="navigate" role="link">Прошедшие матчи</li>
-      </router-link>
-      <router-link custom v-slot="{ navigate }" :to="{ name: 'next' }">
-         <li class="tabs__item" @click="navigate" role="link">Следующий тур</li>
-      </router-link>
-   </ul>
+   <div class="tabs">
+      <ul class="tabs-list">
+         <router-link custom v-slot="{ navigate, isExactActive }" :to="{ name: 'finished' }">
+            <li class="tabs-list__item" :class="{ active: isExactActive }" @click="navigate" role="link">Прошедшие матчи</li>
+         </router-link>
+         <router-link v-if="usePlayerStore().isLogin" custom v-slot="{ navigate, isExactActive }" :to="{ name: 'next' }">
+            <li class="tabs-list__item" :class="{ active: isExactActive }" @click="navigate" role="link">Следующий тур</li>
+         </router-link>
+      </ul>
+   </div>
    <div>
       <router-view></router-view>
    </div>
@@ -17,20 +16,49 @@
 
 <script setup lang="ts">
    import { usePlayerStore } from '@/stores'
+   import { useLink } from 'vue-router'
+   const active = useLink({
+      to: { name: 'finished' },
+   }).isExactActive
+   console.log(active.value)
 </script>
 
 <style lang="scss">
    .tabs {
-      display: inline-flex;
+      display: flex;
       justify-content: center;
-      align-items: center;
-      border: solid 1px black;
+      &-list {
+         display: inline-flex;
+         justify-content: center;
+         align-items: center;
+         gap: 15px;
+         padding: 14px;
 
-      &__item {
-         margin: 4px;
-         padding: 10px;
-         border: solid 1px black;
-         cursor: pointer;
+         margin-bottom: 20px;
+         border-radius: 12px;
+         background-color: $light;
+         box-shadow: inset 0px 1px 5px rgba(0, 0, 0, 0.2);
+
+         &__item {
+            padding: 10px;
+            background-color: $muted;
+            border-radius: 8px;
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);
+            transition: all 200ms ease-in-out;
+            cursor: pointer;
+
+            &.active {
+               background-color: $primary;
+            }
+
+            &:hover {
+               box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            &:active {
+               box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+            }
+         }
       }
    }
 </style>

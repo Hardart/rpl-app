@@ -82,3 +82,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 ### SERVER - delete my bets
 GET  http://localhost:80/delete-my-bets
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InN1cGVyLWFkbWluIiwiYmV0cyI6WzEzOTEwNzcsMTM5MTA3OSwxMzkxMDgzLDEzOTEwNzgsMTM5MTA4NCwxMzkxMDgyLDEzOTEwODEsMTM5MTA4MF0sInBvaW50cyI6MCwiaWF0IjoxNjYyOTc5NTcxLCJleHAiOjE2NjU1NzE1NzF9.d3lpP3ZPPCZ4ZPj9KEdfZWg0ld150i-9uo-oEuftHQI
+
+
+### PLACEHOLDERs
+GET  https://jsonplaceholder.typicode.com/posts
