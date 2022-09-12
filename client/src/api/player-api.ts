@@ -8,6 +8,7 @@ interface ResponseData {
    message?: string
    errors?: string[]
    points: number
+   responseStatus: boolean
 }
 
 export default {
@@ -21,6 +22,16 @@ export default {
       return data
    },
 
+   async delete(email: string) {
+      const { data } = await instance.post<Player>('/delete-user', { email })
+      return data
+   },
+
+   async setNewAdmin(email: string) {
+      const { data } = await instance.post<ResponseData>('/set-admin', { email })
+      return data
+   },
+
    async check() {
       let { data } = await instance.get('check', {
          headers: {
@@ -29,6 +40,7 @@ export default {
       })
       return data
    },
+
    async makeBet(bet: NewBet[]) {
       const { data } = await instance.post<ResponseData>('/new-bet', bet)
       return data

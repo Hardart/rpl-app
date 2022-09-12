@@ -67,5 +67,16 @@ export const usePlayerStore = defineStore('user', {
          if (!this.player) return useAlertStore().addAlert('Предупреждение', 'Проблемы начислением очков')
          this.player.points = points
       },
+
+      async deleteOne(email: string) {
+         const res = await playerAPI.delete(email)
+         if (res.email) return useAlertStore().addAlert('Информация', `Пользователь ${res.last_name} ${res.name.charAt(0)}. удалён`)
+         return useAlertStore().addAlert('Ошибка', 'Проблемы с удалением игрока')
+      },
+
+      async setNewAdmin(email: string) {
+         const { responseStatus, message } = await playerAPI.setNewAdmin(email)
+         return { responseStatus, message }
+      },
    },
 })
