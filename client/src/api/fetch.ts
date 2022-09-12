@@ -1,6 +1,6 @@
 import { ref, isRef, unref, watchEffect, type Ref, type ComputedRef } from 'vue'
 import type { PlayerBets } from '@/assets/ts/interfaces/bet-interface'
-import type { Player } from '@/assets/ts/interfaces/player-interface'
+import type { PlayersData } from '@/assets/ts/interfaces/player-interface'
 import JWT from '@/features/Token-class'
 
 const baseUrl = 'http://localhost:80'
@@ -35,7 +35,7 @@ export async function getBets(url: string) {
 }
 
 export function getUsers() {
-   let data: Ref<null | Player[]> = ref(null)
+   let data: Ref<null | PlayersData> = ref(null)
    let error: Ref<null | unknown> = ref(null)
 
    async function doFetch() {

@@ -30,9 +30,9 @@ class EventService {
       } catch (error) {}
    }
 
-   async finished() {
+   async finished(limit) {
       try {
-         const events = await Match.find({ status: 'finished' }).sort({ round: 'desc' })
+         const events = await Match.find({ status: 'finished' }).sort({ round: 'desc' }).limit(limit)
          return events
       } catch (error) {}
    }

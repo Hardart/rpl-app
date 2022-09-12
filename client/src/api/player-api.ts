@@ -1,4 +1,4 @@
-import type { Player } from '@/assets/ts/interfaces/player-interface'
+import type { Player, PlayersData } from '@/assets/ts/interfaces/player-interface'
 import type { NewBet } from '@/assets/ts/interfaces/bet-interface'
 import instance from './instance'
 
@@ -9,12 +9,6 @@ interface ResponseData {
    errors?: string[]
    points: number
    responseStatus: boolean
-}
-
-interface PlayersData {
-   players: Player[]
-   message?: string
-   errors?: string[]
 }
 
 export default {

@@ -33,6 +33,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
    "password": "134679"
 }
 
+### GET PAST BETS
+GET  http://localhost:80/past?limit=8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiYmV0cyI6WzIyNTIzNTUsMjI1MjM1NV0sInBvaW50cyI6MCwiaWF0IjoxNjYyODkwOTk1LCJleHAiOjE2NjU0ODI5OTV9.ZjkSGJoLnIWsiFi9tWVTzOrFXbxcezbHOth7Kgb8C_A
+
+
 ### ALL PLAYERS
 GET  https://rpl-app-production.up.railway.app/all-players
 

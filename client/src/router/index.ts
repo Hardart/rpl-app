@@ -8,20 +8,22 @@ const router = createRouter({
          path: '/',
          name: 'home',
          component: () => import('@/pages/PageHome.vue'),
-      },
-      {
-         path: '/finished-events',
-         name: 'scores',
-         // route level code-splitting
-         // this generates a separate chunk (About.[hash].js) for this route
-         // which is lazy-loaded when the route is visited.
-         component: () => import('@/pages/PagePastRounds.vue'),
-      },
-      {
-         path: '/next-round',
-         name: 'next',
-         meta: { auth: true },
-         component: () => import('@/pages/PageNextRound.vue'),
+         children: [
+            {
+               path: '/next-round',
+               name: 'next',
+               meta: { auth: true },
+               component: () => import('@/pages/PageNextRound.vue'),
+            },
+            {
+               path: '',
+               name: 'finished',
+               // route level code-splitting
+               // this generates a separate chunk (About.[hash].js) for this route
+               // which is lazy-loaded when the route is visited.
+               component: () => import('@/pages/PagePastRounds.vue'),
+            },
+         ],
       },
       {
          path: '/teams-table',

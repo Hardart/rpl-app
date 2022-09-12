@@ -7,6 +7,7 @@ import JWT from '@/features/Token-class'
 export const useBetStore = defineStore('bet', {
    state: () => ({
       myBets: [] as NewBet[],
+      isUpdated: false,
    }),
    getters: {
       getFinishedBet: (state) => (eventID: number) => state.myBets.find((bet) => bet.event_id == eventID),
@@ -17,6 +18,7 @@ export const useBetStore = defineStore('bet', {
          if (res.message) return useAlertStore().addAlert('Ошибка', res.message)
          usePlayerStore().setPlayerPoints(res.points)
          this.myBets = res.bets
+         this.isUpdated = true
       },
 
       async saveBets(passBets: NewBet[]) {

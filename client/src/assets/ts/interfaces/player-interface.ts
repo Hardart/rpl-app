@@ -8,3 +8,9 @@ export interface Player {
    bets?: number[]
    points: number
 }
+
+export interface PlayersData {
+   players: Player[]
+   message?: string
+   errors?: string[]
+}

@@ -1,7 +1,7 @@
 <template>
    <h1>{{ name }}</h1>
    <div>
-      <table class="users-table" v-if="data">
+      <table class="users-table" v-if="data?.players">
          <thead>
             <tr>
                <th class="expand-w">Имя</th>
@@ -12,7 +12,7 @@
             </tr>
          </thead>
          <tbody>
-            <tr v-for="player in data">
+            <tr v-for="player in data.players">
                <td>{{ player.full_name }}</td>
                <td>{{ player.email }}</td>
                <td>{{ player.role }}</td>

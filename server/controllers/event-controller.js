@@ -21,7 +21,8 @@ class EventController {
 
    async loadPastEvents(req, res, next) {
       try {
-         const events = await eventService.finished()
+         const { limit } = req.query
+         const events = await eventService.finished(limit)
          return res.status(200).json(events)
       } catch (error) {
          next(error)

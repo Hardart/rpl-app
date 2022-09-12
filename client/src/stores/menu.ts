@@ -6,8 +6,7 @@ export const useMenuStore = defineStore('menu', {
    state: () => ({
       mainMenu: [
          { id: 1, title: 'Home', icon: Icons.home, link: '/', auth: false, exact: true },
-         { id: 2, title: 'Events', icon: Icons.dribbble, link: '/finished-events', auth: false },
-         { id: 4, title: 'Tables', icon: Icons.grid, link: '/next-round', auth: true },
+         { id: 3, title: 'Tables', icon: Icons.grid, link: '/tables', auth: true },
       ] as MainMenu[],
       eventsLimit: 12,
    }),
