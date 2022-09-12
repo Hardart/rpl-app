@@ -1,6 +1,6 @@
 <template>
    <div class="bet-card">
-      <div class="bet-card__header">{{ event.id }} | {{ eventDate }} | Раунд {{ event.round }}</div>
+      <div class="bet-card__header">{{ eventDate }}</div>
       <div class="bet-card__body">
          <ATeamCard :event="event" />
       </div>

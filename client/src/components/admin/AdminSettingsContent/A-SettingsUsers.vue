@@ -43,7 +43,7 @@
 <style lang="scss">
    .users-table {
       display: table;
-      width: 400px;
+      width: 100%;
       border-collapse: collapse;
       border-spacing: 0;
 

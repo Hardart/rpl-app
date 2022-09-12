@@ -1,11 +1,11 @@
 <template>
    <div class="tabs">
       <ul class="tabs-list">
-         <router-link custom v-slot="{ navigate, isExactActive }" :to="{ name: 'finished' }">
-            <li class="tabs-list__item" :class="{ active: isExactActive }" @click="navigate" role="link">Прошедшие матчи</li>
+         <router-link custom v-slot="{ navigate, isExactActive }" :to="{ name: 'rplTable' }">
+            <li class="tabs-list__item" :class="{ active: isExactActive }" @click="navigate" role="link">Команды РПЛ</li>
          </router-link>
-         <router-link v-if="usePlayerStore().isLogin" custom v-slot="{ navigate, isExactActive }" :to="{ name: 'next' }">
-            <li class="tabs-list__item" :class="{ active: isExactActive }" @click="navigate" role="link">Следующий тур</li>
+         <router-link v-if="usePlayerStore().isLogin" custom v-slot="{ navigate, isExactActive }" :to="{ name: 'playersTable' }">
+            <li class="tabs-list__item" :class="{ active: isExactActive }" @click="navigate" role="link">Игроки</li>
          </router-link>
       </ul>
    </div>

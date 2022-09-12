@@ -5,7 +5,7 @@
             <RouterLink :to="menuItem.link" active-class="active" v-if="!menuItem.auth || usePlayerStore().isLogin" v-html="menuItem.icon"> </RouterLink>
          </li>
          <li v-if="usePlayerStore().isLogin" class="nav-list__item auth">
-            <RouterLink to="user" v-html="Icons.user"></RouterLink>
+            <RouterLink :to="{ name: 'user' }" v-html="Icons.user"></RouterLink>
          </li>
          <li v-else class="nav-list__item auth">
             <RouterLink to="login" v-html="Icons['sign-in']"></RouterLink>

@@ -26,15 +26,26 @@ const router = createRouter({
          ],
       },
       {
-         path: '/teams-table',
-         name: 'teams-table',
-         component: () => import('@/pages/PageNextRound.vue'),
-      },
-      {
          path: '/tables',
          name: 'tables',
          meta: { auth: true },
-         component: () => import('@/pages/PageNextRound.vue'),
+         component: () => import('@/pages/PageTables.vue'),
+         children: [
+            {
+               path: '',
+               name: 'rplTable',
+               // route level code-splitting
+               // this generates a separate chunk (About.[hash].js) for this route
+               // which is lazy-loaded when the route is visited.
+               component: () => import('@/pages/PagePRLTeamsTable.vue'),
+            },
+            {
+               path: 'players',
+               name: 'playersTable',
+               meta: { auth: true },
+               component: () => import('@/pages/PagePlayersTable.vue'),
+            },
+         ],
       },
       {
          path: '/login',
@@ -61,12 +72,6 @@ const router = createRouter({
          name: 'user',
          meta: { auth: true },
          component: () => import('@/pages/PageUserProfile.vue'),
-      },
-      {
-         path: '/admin-settings',
-         name: 'adminSettings',
-         meta: { auth: true },
-         component: () => import('@/pages/PageAdminSettings.vue'),
       },
    ],
 })

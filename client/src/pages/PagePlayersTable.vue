@@ -1,21 +1,9 @@
 <template>
-   <div class="tabs">
-      <ul class="tabs-list">
-         <router-link custom v-slot="{ navigate, isExactActive }" :to="{ name: 'finished' }">
-            <li class="tabs-list__item" :class="{ active: isExactActive }" @click="navigate" role="link">Прошедшие матчи</li>
-         </router-link>
-         <router-link v-if="usePlayerStore().isLogin" custom v-slot="{ navigate, isExactActive }" :to="{ name: 'next' }">
-            <li class="tabs-list__item" :class="{ active: isExactActive }" @click="navigate" role="link">Следующий тур</li>
-         </router-link>
-      </ul>
-   </div>
-   <div>
-      <router-view></router-view>
-   </div>
+   <APlayersTable />
 </template>
 
 <script setup lang="ts">
-   import { usePlayerStore } from '@/stores'
+   import APlayersTable from '../components/A-PlayersTable.vue'
 </script>
 
 <style lang="scss">
