@@ -24,4 +24,5 @@ export enum BetStatus {
    score = 'Угадал счёт матча!',
    no_info = 'Нет данных',
    false = 'Ставка проиграна',
+   inprogress = 'Матч идет',
 }

@@ -26,10 +26,13 @@ class BetService {
    async getAllMyBets(email) {
       const player = await this.#getPlayerInfo(email)
 
-      if (!player.bets) return { bets: [], points: 0 }
+      if (!player.bets) {
+         await this.#findAndUpdate(email, [], 0)
+         return { bets: [], points: 0 }
+      }
       const finishedEvents = await eventsService.finished()
-      this.#updateBetStatus(player.bets, player.data, finishedEvents)
-      return { bets: player.bets, points: player.data.points }
+      const { bets, points } = await this.#updateBetStatus(player.bets, player.data, finishedEvents)
+      return { bets, points }
    }
 
    async deleteAllBets(email) {
@@ -90,7 +93,9 @@ class BetService {
             })
          }
       })
-   } // NOT WORK YET!!!
+      await this.#findAndUpdate(player.email, bets, player.points)
+      return { bets, points: player.points }
+   }
 
    #countPoints(bet, event, points) {
       bet.winner_code = event.winner_code
@@ -100,6 +105,11 @@ class BetService {
       if (betScore === eventScore) return (points += 3)
       if (bet.bet_code == event.winner_code) return (points += 2)
       return points
+   }
+
+   async #findAndUpdate(email, bets, points) {
+      await User.findOneAndUpdate({ email }, { points })
+      await Bet.findOneAndUpdate({ player_email: email }, { player_bets: bets })
    }
 }
 

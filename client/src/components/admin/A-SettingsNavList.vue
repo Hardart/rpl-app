@@ -10,7 +10,9 @@
       </div>
       <div class="w-expand">
          <div class="settings-content">
-            <component :is="Content.comp[comp.id]" :name="comp.activeTitle"></component>
+            <KeepAlive>
+               <component :is="Content.comp[comp.id]" :name="comp.activeTitle"></component>
+            </KeepAlive>
          </div>
       </div>
    </div>

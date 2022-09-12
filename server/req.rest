@@ -3,10 +3,10 @@ POST  http://localhost:80/registration
 Content-Type: application/json
 
 {
-   "email": "admin@gmail.com",
+   "email": "kaino@bk.ru",
    "password": "134679",
-   "name": "Факул",
-   "last_name": "Факулов"
+   "name": "Шакир",
+   "last_name": "Шакиров"
 }
 
 ### LOGIN
@@ -14,7 +14,7 @@ POST  http://localhost:80/login
 Content-Type: application/json
 
 {
-   "email": "admin@gmail.com",
+   "email": "admin@chatpnz.ru",
    "password": "134679"
 }
 
@@ -37,9 +37,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 GET  https://rpl-app-production.up.railway.app/all-players
 
 
-
-
-
 ### SERVER - players
 GET  https://rpl-app-production.up.railway.app/all-players
 
@@ -49,7 +46,7 @@ POST https://rpl-app-production.up.railway.app/login
 Content-Type: application/json
 
 {
-   "email": "admin@gmail.com",
+   "email": "admin@chatpnz.ru",
    "password": "134679"
 }
 
@@ -57,7 +54,7 @@ Content-Type: application/json
 
 ### SERVER - my bets
 GET   http://localhost:80/my-bets
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiYmV0cyI6WzIyNTIzNTUsMTM5MTA3OSwxMzkxMDgzLDEzOTEwNzgsMTM5MTA4NCwxMzkxMDgyXSwicG9pbnRzIjowLCJpYXQiOjE2NjI4OTY2MTYsImV4cCI6MTY2NTQ4ODYxNn0.-CcacECExNZqYF7PJ0G59SY9lru-A8Ov_Rj02sFb6Xo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InN1cGVyLWFkbWluIiwiYmV0cyI6WzEzOTEwNzksMTM5MTA4MywxMzkxMDc4LDEzOTEwODQsMTM5MTA4MiwxMzkxMDc3XSwicG9pbnRzIjowLCJpYXQiOjE2NjI5MDI3NzcsImV4cCI6MTY2NTQ5NDc3N30.yl7hrDtVHGJIzFg6H9Y9t6TlvgOLufORu5ANAm7Eh0U
 
 ### SERVER - new bet
 POST   http://localhost:80/new-bet
@@ -78,4 +75,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 
 ### SERVER - delete my bets
 GET  http://localhost:80/delete-my-bets
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiYmV0cyI6WzIyNTIzNTUsMTM5MTA3OSwxMzkxMDgzLDEzOTEwNzgsMTM5MTA4NCwxMzkxMDgyXSwicG9pbnRzIjowLCJpYXQiOjE2NjI4OTY2MTYsImV4cCI6MTY2NTQ4ODYxNn0.-CcacECExNZqYF7PJ0G59SY9lru-A8Ov_Rj02sFb6Xo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InN1cGVyLWFkbWluIiwiYmV0cyI6WzEzOTEwNzcsMTM5MTA3OSwxMzkxMDgzLDEzOTEwNzgsMTM5MTA4NCwxMzkxMDgyLDEzOTEwODEsMTM5MTA4MF0sInBvaW50cyI6MCwiaWF0IjoxNjYyOTc5NTcxLCJleHAiOjE2NjU1NzE1NzF9.d3lpP3ZPPCZ4ZPj9KEdfZWg0ld150i-9uo-oEuftHQI

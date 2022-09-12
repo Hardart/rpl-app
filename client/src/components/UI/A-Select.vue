@@ -1,26 +1,49 @@
 <template>
    <div class="select">
       <div class="select__input">
-         <input v-model="val" type="text" />
-         <button @click="changeState" class="btn btn-warning" v-html="Icons['arrow-down']"></button>
+         <input @keyup.esc="escPress" @focus="changeState(true)" @input="filterList($event.target as EventTarget)" :value="modelValue" type="text" />
+         <button @click="changeState()" class="btn btn-warning" v-html="Icons['arrow-down']"></button>
       </div>
       <ul class="select__list" :class="{ active: isOpen }">
-         <li @click="setName" class="select__list-item">Денис</li>
-         <li class="select__list-item">Арчи</li>
+         <li class="select__list-item" @click="selectPlayer(player.full_name)" v-for="player in options">{{ player.full_name }}</li>
       </ul>
    </div>
 </template>
 
 <script setup lang="ts">
+   import type { Player } from '@/assets/ts/interfaces/player-interface'
    import Icons from '@/features/Icons'
-   import { ref } from 'vue'
+   import { computed, onMounted, ref } from 'vue'
+
    const isOpen = ref(false)
-   const changeState = () => (isOpen.value = !isOpen.value)
-   const setName = () => {
-      isOpen.value = !isOpen.value
-      val.value = 'Денис'
+   const changeState = (state: boolean = false) => {
+      if (!state) return (isOpen.value = !isOpen.value)
+      isOpen.value = state
    }
-   const val = ref('Выбери игрока')
+
+   const props = defineProps<{
+      options: Player[] | null
+      modelValue: string
+   }>()
+
+   const emits = defineEmits<{
+      (e: 'selected', player: string): void
+      (e: 'inputValue', value: string): void
+   }>()
+
+   const selectPlayer = (playerName: string) => {
+      emits('selected', playerName)
+      isOpen.value = !isOpen.value
+   }
+
+   const filterList = (e: EventTarget) => {
+      const inputValue = (e as HTMLInputElement).value
+      emits('inputValue', inputValue)
+   }
+
+   const escPress = () => {
+      isOpen.value = false
+   }
 </script>
 
 <style lang="scss">
@@ -33,7 +56,7 @@
 
          input {
             width: 100%;
-            padding: 12px;
+            padding: 12px 12px 10px;
             padding-right: 20px;
             outline: none;
             border: none;
@@ -59,7 +82,7 @@
          background-color: $danger;
          border-radius: 10px;
          overflow: hidden;
-         opacity: 0;
+         display: none;
          transition: all 0.2s ease-in-out;
 
          &-item {
@@ -72,7 +95,7 @@
          }
 
          &#{&}.active {
-            opacity: 1;
+            display: block;
          }
       }
    }

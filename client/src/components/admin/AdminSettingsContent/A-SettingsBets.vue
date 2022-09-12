@@ -2,7 +2,7 @@
    <h1>{{ name }}</h1>
 
    <div class="mb-10" v-for="player in data">
-      <h3 @click="myBets">{{ player.name }}</h3>
+      <h3 @click="myBets">{{ player.full_name }}</h3>
       <template v-for="betArray in bet.data">
          <ul v-if="betArray.player_email == player.email">
             <li v-for="bet in betArray.player_bets">{{ bet.event_id }}</li>

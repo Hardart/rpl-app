@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User, Bet } = require('../models')
 const bcrypt = require('bcryptjs')
 const tokenService = require('./token-service')
 const ErrorApi = require('../handlers/error-api')
@@ -9,9 +9,9 @@ class UserService {
       if (candidate) throw ErrorApi.BadRequest(`Пользователь с адресом ${email} уже существует`)
 
       const hashPassword = await bcrypt.hash(password, 5)
-      const { role } = await User.create({ email, password: hashPassword, name, last_name })
+      const { role, full_name } = await User.create({ email, password: hashPassword, name, last_name })
       if (!role) throw ErrorApi.RegistrationError()
-      const token = tokenService.generateToken({ email, name, last_name, role })
+      const token = tokenService.generateToken({ email, name, last_name, role, full_name })
       return token
    }
 
@@ -22,15 +22,32 @@ class UserService {
       const isPasswordCorrect = await bcrypt.compare(password, user.password)
       if (!isPasswordCorrect) throw ErrorApi.BadRequest(`Неверный пароль`)
 
-      const { name, last_name, role, bets, points } = user
-      const token = tokenService.generateToken({ email, name, last_name, role, bets, points })
+      const { name, last_name, role, bets, points, full_name } = user
+      const token = tokenService.generateToken({ email, name, last_name, role, bets, points, full_name })
       return token
    }
 
    async getAll() {
-      const players = await User.find({ role: ['player', 'admin'] })
-      if (!players) return { message: 'еще никто не зарегистрировался' }
+      const playersSchema = await User.find({ role: ['player', 'admin'] })
+      if (!playersSchema) return { message: 'еще никто не зарегистрировался' }
+      let players = []
+      playersSchema.forEach(({ full_name, email, points, bets, role }) => {
+         players.push({ full_name, email, points, bets, role })
+      })
       return players
+   }
+
+   async deleteUser(email) {
+      const deletedUser = await User.findOneAndDelete({ email })
+      const deletedBets = await Bet.findOneAndDelete({ player_email: email })
+      if (deletedBets && deletedUser) return true
+      return false
+   }
+
+   async newAdmin(email) {
+      await User.findOneAndUpdate({ role: 'admin' }, { role: 'player' })
+      await User.findOneAndUpdate({ email }, { role: 'admin' })
+      return true
    }
 }
 

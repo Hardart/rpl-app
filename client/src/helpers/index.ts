@@ -1,4 +1,4 @@
-import { BetStatus } from '@/assets/ts/enums/status-enum'
+import { BetStatus, EventStatus } from '@/assets/ts/enums/status-enum'
 import type { NewBet } from '@/assets/ts/interfaces/bet-interface'
 import type { Event, Team, Teams } from '@/assets/ts/interfaces/event-interface'
 
@@ -21,7 +21,8 @@ export function checkDateOfGame(eventDate: number): boolean {
    return false
 }
 
-export function checkBetStatus(playerBet: NewBet, eventScore: string): string {
+export function checkBetStatus(playerBet: NewBet, eventScore: string, eventStatus: string): string {
+   if (eventStatus == EventStatus.inprogress) return BetStatus.inprogress
    if (`${playerBet.home_score}${playerBet.away_score}` === eventScore) return BetStatus.score
    if (playerBet.bet_code === playerBet.winner_code) return BetStatus.team
    if (!playerBet.status) return BetStatus.no_info

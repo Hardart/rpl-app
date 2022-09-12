@@ -49,6 +49,9 @@ const User = Schema({
       default: 'player',
    },
 })
+User.virtual('full_name').get(function () {
+   return this.last_name + ' ' + this.name
+})
 
 module.exports = {
    Match: model('Match', Match),

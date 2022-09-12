@@ -82,6 +82,26 @@ class PlayerController {
          next(error)
       }
    }
+
+   async deleteUser(req, res, next) {
+      try {
+         const { email } = req.body
+         const user = await playerService.deleteUser(email)
+         return res.status(200).json(user)
+      } catch (error) {
+         next(error)
+      }
+   }
+
+   async setRoleToAdmin(req, res, next) {
+      try {
+         const { email } = req.body
+         const response = await playerService.newAdmin(email)
+         return res.status(200).json({ responseStatus: response })
+      } catch (error) {
+         next(error)
+      }
+   }
 }
 
 module.exports = new PlayerController()

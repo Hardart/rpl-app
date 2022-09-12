@@ -13,11 +13,11 @@
          </thead>
          <tbody>
             <tr v-for="player in data">
-               <td>{{ player.last_name }} {{ player.name }}</td>
+               <td>{{ player.full_name }}</td>
                <td>{{ player.email }}</td>
                <td>{{ player.role }}</td>
                <td class="text-center">{{ player.points }}</td>
-               <td class="text-center"><button @click.prevent="" class="btn btn-icon btn-danger" v-html="Icons.close"></button></td>
+               <td class="text-center"><button @click="removeUser(player.email)" class="btn btn-icon btn-danger" v-html="Icons.close"></button></td>
             </tr>
          </tbody>
       </table>
@@ -32,11 +32,13 @@
 <script setup lang="ts">
    import Icons from '@/features/Icons'
    import { getUsers } from '@/api/fetch'
+   import { usePlayerStore } from '@/stores'
 
    defineProps<{
       name: string
    }>()
    const { data, error, retry } = getUsers()
+   const removeUser = async (email: string) => await usePlayerStore().deleteOne(email)
 </script>
 <style lang="scss">
    .users-table {

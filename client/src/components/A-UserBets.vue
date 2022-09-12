@@ -5,7 +5,7 @@
             <div class="bet-card">
                <ATeamCard :event="event(bet.event_id)" :show-bet-score="true" />
                <div class="bet-card__status">
-                  <div class="rotate-180">{{ checkBetStatus(bet, score(bet.event_id)) }}</div>
+                  <div class="rotate-180">{{ checkBetStatus(bet, score(bet.event_id), event(bet.event_id).status) }}</div>
                </div>
             </div>
          </div>

@@ -14,12 +14,13 @@
 <script setup lang="ts">
    import ATeamCard from './A-TeamCard.vue'
    import BetInput from './UI/BetInput.vue'
+   import { usePlayerStore } from '@/stores'
    import Bet from '@/features/Bet-class'
-   import { usePlayerStore } from '@/stores/player'
-   import type { Event } from '@/assets/ts/interfaces/event-interface'
    import { EventStatus, BetButtonText } from '@/assets/ts/enums/status-enum'
+   import type { Event } from '@/assets/ts/interfaces/event-interface'
    import { fixEventTime } from '@/helpers'
    import { computed } from 'vue'
+
    const bet = new Bet()
    const props = defineProps<{
       event: Event

@@ -32,8 +32,8 @@ class Tokens {
    }
 
    getPlayerInfo(str: string) {
-      const { email, name, last_name, role, bets, points } = this.decode(str) as Player
-      return { email, name, last_name, role, bets, points }
+      const { email, name, last_name, role, bets, points, full_name } = this.decode(str) as Player
+      return { email, name, last_name, role, bets, points, full_name }
    }
 
    get accessToken() {
