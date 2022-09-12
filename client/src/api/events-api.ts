@@ -18,7 +18,7 @@ export default {
    },
 
    async past() {
-      const { data } = await instance.get<Event[]>('/past')
+      const { data } = await instance.get<Event[]>('/past?limit=8')
       return data
    },
 
