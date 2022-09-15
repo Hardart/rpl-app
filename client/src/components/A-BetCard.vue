@@ -5,7 +5,7 @@
          <ATeamCard :event="event" />
       </div>
       <div class="bet-card__footer" v-if="event.status == EventStatus.notStarted">
-         <button @click="bet.show(event.id)" class="btn btn-success w-100" :disabled="usePlayerStore().isBetDone(event.id) || bet.isDisabled.value">{{ buttonText }}</button>
+         <a-button @click="bet.show(event.id)" color="success" class="w-100" :text="buttonText" :disabled="usePlayerStore().isBetDone(event.id) || bet.isDisabled.value" />
       </div>
       <BetInput :bet="bet" v-if="bet.open.value" :class="{ open: event.id == bet.cardID.value }" />
    </div>
@@ -20,6 +20,7 @@
    import type { Event } from '@/assets/ts/interfaces/event-interface'
    import { fixEventTime } from '@/helpers'
    import { computed } from 'vue'
+
    const bet = new Bet()
    const props = defineProps<{
       event: Event

@@ -82,6 +82,7 @@ export const usePlayerStore = defineStore('user', {
 
       async getAllPlayers() {
          const res = await playerAPI.getAllPlayers()
+         console.log(res)
          if (res.message) {
             useAlertStore().addAlert('Ошибка', res.message)
             return []

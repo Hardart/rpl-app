@@ -1,5 +1,5 @@
 <template>
-   <table class="users-table" v-if="data?.players">
+   <table class="table" v-if="data?.players">
       <thead>
          <tr>
             <th class="shrink-w"></th>
@@ -8,23 +8,32 @@
          </tr>
       </thead>
       <tbody>
-         <tr v-for="(player, index) in data.players">
-            <td>{{ index + 1 }}</td>
-            <td>{{ player.full_name }}</td>
-            <td class="text-center">{{ player.points }}</td>
-         </tr>
+         <template v-for="(player, index) in data.players">
+            <tr v-if="usePlayerStore().player?.role == 'super-admin'">
+               <td>{{ index + 1 }}</td>
+               <td>{{ player.full_name }}</td>
+               <td class="text-center">{{ player.points }}</td>
+            </tr>
+            <tr v-else-if="player.role != 'super-admin'">
+               <td>{{ index + 1 }}</td>
+               <td>{{ player.full_name }}</td>
+               <td class="text-center">{{ player.points }}</td>
+            </tr>
+         </template>
       </tbody>
    </table>
 
    <div v-else-if="error">
-      <button class="btn btn-icon" @click="retry" v-html="Icons.reply"></button>
+      <a-button isRound="true" @click="retry" :icon="Icons.reply" />
    </div>
    <div v-else>Загрузка...</div>
 </template>
 
 <script setup lang="ts">
-   import { getUsers } from '@/api/fetch'
+   import { usePlayerStore } from '@/stores'
    import Icons from '@/features/Icons'
+   import { getUsers } from '@/api/fetch'
+
    const { data, error, retry } = getUsers()
 </script>
 

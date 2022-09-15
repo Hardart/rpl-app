@@ -1,15 +1,13 @@
 <template>
    <div class="grid childs-w-100" v-if="betStore.myBets.length > 0">
-      <template v-for="bet in betStore.myBets">
-         <div>
-            <div class="bet-card">
-               <ATeamCard :event="event(bet.event_id)" :show-bet-score="true" />
-               <div class="bet-card__status">
-                  <div class="rotate-180">{{ checkBetStatus(bet, score(bet.event_id), event(bet.event_id).status) }}</div>
-               </div>
+      <div v-for="bet in betStore.myBets">
+         <div class="bet-card">
+            <ATeamCard :event="event(bet.event_id)" :show-bet-score="true" />
+            <div class="bet-card__status">
+               <div class="rotate-180">{{ checkBetStatus(bet, score(bet.event_id), event(bet.event_id).status) }}</div>
             </div>
          </div>
-      </template>
+      </div>
    </div>
    <h1 v-else>Пока нет ни одной ставки</h1>
 </template>

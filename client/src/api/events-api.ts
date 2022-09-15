@@ -1,4 +1,4 @@
-import type { Event } from '@/assets/ts/interfaces/event-interface'
+import type { Event, TeamStanding } from '@/assets/ts/interfaces/event-interface'
 import instance from './instance'
 
 interface Box {
@@ -24,6 +24,11 @@ export default {
 
    async future() {
       const { data } = await instance.get<Event[]>('/future')
+      return data
+   },
+
+   async standings() {
+      const { data } = await instance.get<TeamStanding[]>('/standings')
       return data
    },
 }

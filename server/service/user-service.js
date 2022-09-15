@@ -28,7 +28,7 @@ class UserService {
    }
 
    async getAll() {
-      const playersSchema = await User.find({ role: ['player', 'admin'] })
+      const playersSchema = await User.find()
       if (!playersSchema) return { message: 'еще никто не зарегистрировался' }
       let players = []
       playersSchema.forEach(({ full_name, email, points, bets, role }) => {

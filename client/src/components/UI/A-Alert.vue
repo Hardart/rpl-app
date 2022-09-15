@@ -7,6 +7,12 @@
    </div>
 </template>
 
+<script lang="ts">
+   export default {
+      name: 'A-Alert',
+   }
+</script>
+
 <script setup lang="ts">
    import type { Alert } from '@/assets/ts/interfaces/alert-interface'
    import Icons from '@/features/Icons'

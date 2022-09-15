@@ -13,7 +13,7 @@
          <li v-if="usePlayerStore().player?.role == 'super-admin'" class="btn btn-icon btn-secondary" @click="openAdminSettings" v-html="Icons.cog"></li>
       </ul>
    </nav>
-   <Teleport to="body" v-if="isOpen">
+   <Teleport to="body">
       <ASettingsContainer />
    </Teleport>
 </template>
@@ -22,8 +22,9 @@
    import ASettingsContainer from './admin/A-SettingsContainer.vue'
    import type { MainMenu } from '@/assets/ts/interfaces/menu-interface'
    import { useMenuStore, usePlayerStore } from '@/stores'
+   import { openAdminSettings } from '@/features/adminSettings'
    import Icons from '@/features/Icons'
-   import { openAdminSettings, isOpen } from '@/features/adminSettings'
+
    const menu: MainMenu[] = useMenuStore().getMainMenu
 </script>
 

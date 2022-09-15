@@ -1,22 +1,13 @@
 <template>
-   <div v-for="round in events[0].round">
-      <h1>Раунд {{ round }}</h1>
-      <div class="grid childs-w-100">
-         <template v-for="event in events">
-            <div v-if="event.round == round">
-               <ABetCard :event="event" :show-bet="false" />
-            </div>
-         </template>
-         <div v-intersection="$emit('more')" class="observer"></div>
-      </div>
-      <hr />
-   </div>
+   <AAccordeon :items="events" />
 </template>
 <script setup lang="ts">
-   import ABetCard from './A-BetCard.vue'
+   import AEventsGrid from '@/components/A-EventsGrid.vue'
    import { useEventsStore } from '@/stores'
    import { computed } from 'vue'
-   const events = computed(() => useEventsStore().limited)
+   import AAccordeon from './UI/A-Accordeon.vue'
+
+   const events = computed(() => useEventsStore().finished)
    defineEmits<{
       (e: 'more'): void
    }>()

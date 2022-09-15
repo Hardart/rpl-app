@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import eventsAPI from '@/api/events-api'
-import type { Event, EventSortBy } from '@/assets/ts/interfaces/event-interface'
+import type { Event, EventSortBy, TeamStanding } from '@/assets/ts/interfaces/event-interface'
 
 export const useEventsStore = defineStore({
    id: 'events',
@@ -9,6 +9,7 @@ export const useEventsStore = defineStore({
       finished: [] as Event[],
       limited: [] as Event[],
       next: [] as Event[],
+      standingsTable: [] as TeamStanding[],
       isLoading: false,
       limit: 8,
    }),
@@ -39,6 +40,11 @@ export const useEventsStore = defineStore({
          this.all = [...past, ...next]
          this.finished = past
          this.next = next
+      },
+      async loadTable() {
+         const data = await eventsAPI.standings()
+         data.sort((a, b) => (a.position > b.position ? 1 : -1))
+         this.standingsTable = data
       },
       async update() {
          this.isLoading = true

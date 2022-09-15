@@ -23,6 +23,14 @@
 }
 
 //theme color
+@mixin dark-theme-color($dark-mode: true) {
+   @if $dark-mode {
+      background-color: tint($dark, 2%);
+   }
+}
+
+
+
 @mixin row-cols($count, $padding-left: $cards-gap-x) {
    > div {
       width: divide(100%, $count);

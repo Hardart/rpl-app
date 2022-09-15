@@ -14,6 +14,7 @@
    import { EventStatus } from '@/assets/ts/enums/status-enum'
    import { useEventsStore, useBetStore } from '@/stores'
    import { checkDateOfGame } from '@/helpers'
+
    if (!useBetStore().isUpdated) await useBetStore().loadBets()
    if (useEventsStore().next.length < 1) await useEventsStore().loadNextRound()
    const events: Event[] = useEventsStore().getNext

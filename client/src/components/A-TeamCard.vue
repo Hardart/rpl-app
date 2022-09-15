@@ -6,9 +6,8 @@
 </template>
 
 <script setup lang="ts">
-   import type { Event } from '@/assets/ts/interfaces/event-interface'
    import ATeamCardItem from './A-TeamCardItem.vue'
-
+   import type { Event } from '@/assets/ts/interfaces/event-interface'
    import { teamsBundle } from '@/helpers'
    import { useBetStore } from '@/stores'
 

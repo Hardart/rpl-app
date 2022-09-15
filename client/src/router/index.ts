@@ -1,5 +1,14 @@
 import { usePlayerStore } from '@/stores/player'
 import { createRouter, createWebHistory } from 'vue-router'
+import HomePage from '@/pages/PageHome.vue'
+import NextEvents from '@/pages/PageNextRound.vue'
+import FinishedEvents from '@/pages/PagePastRounds.vue'
+import Tables from '@/pages/PageTables.vue'
+import RPLTeams from '@/pages/PagePRLTeamsTable.vue'
+import Players from '@/pages/PagePlayersTable.vue'
+import Login from '@/pages/PageLogin.vue'
+import Registration from '@/pages/PageRegistration.vue'
+import Player from '@/pages/PageUserProfile.vue'
 
 const router = createRouter({
    history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,13 +16,13 @@ const router = createRouter({
       {
          path: '/',
          name: 'home',
-         component: () => import('@/pages/PageHome.vue'),
+         component: HomePage,
          children: [
             {
                path: '/next-round',
                name: 'next',
                meta: { auth: true },
-               component: () => import('@/pages/PageNextRound.vue'),
+               component: NextEvents,
             },
             {
                path: '',
@@ -21,7 +30,7 @@ const router = createRouter({
                // route level code-splitting
                // this generates a separate chunk (About.[hash].js) for this route
                // which is lazy-loaded when the route is visited.
-               component: () => import('@/pages/PagePastRounds.vue'),
+               component: FinishedEvents,
             },
          ],
       },
@@ -29,7 +38,7 @@ const router = createRouter({
          path: '/tables',
          name: 'tables',
          meta: { auth: true },
-         component: () => import('@/pages/PageTables.vue'),
+         component: Tables,
          children: [
             {
                path: '',
@@ -37,13 +46,13 @@ const router = createRouter({
                // route level code-splitting
                // this generates a separate chunk (About.[hash].js) for this route
                // which is lazy-loaded when the route is visited.
-               component: () => import('@/pages/PagePRLTeamsTable.vue'),
+               component: RPLTeams,
             },
             {
                path: 'players',
                name: 'playersTable',
                meta: { auth: true },
-               component: () => import('@/pages/PagePlayersTable.vue'),
+               component: Players,
             },
          ],
       },
@@ -55,7 +64,7 @@ const router = createRouter({
             if (usePlayerStore().isLogin) return next({ name: 'home' })
             next()
          },
-         component: () => import('@/pages/PageLogin.vue'),
+         component: Login,
       },
       {
          path: '/registration',
@@ -65,13 +74,13 @@ const router = createRouter({
             if (usePlayerStore().isLogin) return next({ name: 'home' })
             next()
          },
-         component: () => import('@/pages/PageRegistration.vue'),
+         component: Registration,
       },
       {
          path: '/user',
          name: 'user',
          meta: { auth: true },
-         component: () => import('@/pages/PageUserProfile.vue'),
+         component: Player,
       },
    ],
 })

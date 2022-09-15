@@ -26,3 +26,13 @@ export interface Teams {
    awayTeam: Team
    homeTeam: Team
 }
+
+export interface TeamStanding {
+   name: string
+   matches_total: string
+   wins_total: string
+   draws_total: string
+   losses_total: string
+   points_total: string
+   position: number
+}

@@ -1,7 +1,9 @@
 <template>
-   <h3>Страница в разработке</h3>
+   <ARPLTeamsTable />
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+   import ARPLTeamsTable from '../components/A-RPLTeamsTable.vue'
+</script>
 
 <style></style>

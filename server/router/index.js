@@ -6,7 +6,7 @@ const eventController = require('../controllers/event-controller')
 const playerController = require('../controllers/player-controller')
 
 router.get('/all', eventController.loadAll)
-router.get('/mongo', eventController.loadFromMongo)
+router.get('/standings', eventController.loadStandingsInfo)
 router.get('/past', eventController.loadPastEvents)
 router.get('/future', eventController.loadFutureEvents)
 router.get('/check', authCheck, playerController.check)

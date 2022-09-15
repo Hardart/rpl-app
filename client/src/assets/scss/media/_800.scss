@@ -76,4 +76,39 @@
       padding: 10px 22px;     
     }
    
+
+    .table {
+      display: table;
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+   
+      th.shrink-w {
+         width: 1px;
+         text-align: center;
+      }
+   
+      .expand-w {
+         min-width: 150px;
+      }
+   
+      th,
+      td {
+         display: table-cell;
+         padding: 10px 15px;
+         text-align: left;
+      }
+
+      
+      tbody {
+         tr {
+            border-top: 1px solid mix(#000000, $muted, 30);
+            cursor: default;
+   
+            &:hover {
+               background-color: $primary;
+            }
+         }
+      }
+   }
 }

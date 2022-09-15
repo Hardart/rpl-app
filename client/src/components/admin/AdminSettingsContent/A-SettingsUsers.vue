@@ -1,7 +1,7 @@
 <template>
    <h1>{{ name }}</h1>
    <div>
-      <table class="users-table" v-if="data?.players">
+      <table class="table dark-mode" v-if="data?.players">
          <thead>
             <tr>
                <th class="expand-w">Имя</th>
@@ -17,7 +17,9 @@
                <td>{{ player.email }}</td>
                <td>{{ player.role }}</td>
                <td class="text-center">{{ player.points }}</td>
-               <td class="text-center"><button @click="removeUser(player.email)" class="btn btn-icon btn-danger" v-html="Icons.close"></button></td>
+               <td class="text-center">
+                  <a-button @click="removeUser(player.email)" color="danger" isRound="true" :icon="Icons.close" />
+               </td>
             </tr>
          </tbody>
       </table>
@@ -40,37 +42,4 @@
    const { data, error, retry } = getUsers()
    const removeUser = async (email: string) => await usePlayerStore().deleteOne(email)
 </script>
-<style lang="scss">
-   .users-table {
-      display: table;
-      width: 100%;
-      border-collapse: collapse;
-      border-spacing: 0;
-
-      th.shrink-w {
-         width: 1px;
-         text-align: center;
-      }
-
-      .expand-w {
-         min-width: 150px;
-      }
-
-      th,
-      td {
-         display: table-cell;
-         padding: 10px 15px;
-         text-align: left;
-      }
-      tbody {
-         tr {
-            border-top: 1px solid mix(#000000, $muted, 30);
-            cursor: default;
-
-            &:hover {
-               background-color: $secondary;
-            }
-         }
-      }
-   }
-</style>
+<style lang="scss"></style>

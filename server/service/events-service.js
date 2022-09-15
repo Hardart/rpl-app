@@ -22,12 +22,23 @@ class EventService {
       }
    }
 
-   async loadFromMongo() {
-      try {
-         const next = await this.notStarted()
-         const past = await this.finished()
-         return { next, past }
-      } catch (error) {}
+   async getStandingsData() {
+      const { data } = await eventsApi.standings()
+      let standingsTable = []
+      data[0].standings_rows.forEach((row) => {
+         const teamData = {
+            name: row.team.name_translations.ru,
+            matches_total: row.fields.matches_total,
+            wins_total: row.fields.wins_total,
+            draws_total: row.fields.draws_total,
+            losses_total: row.fields.losses_total,
+            points_total: row.fields.points_total,
+            position: row.position,
+         }
+         standingsTable.push(teamData)
+      })
+
+      return standingsTable
    }
 
    // set limit

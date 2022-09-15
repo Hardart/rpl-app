@@ -20,8 +20,8 @@
    const isDisable = ref(true)
    const inputValue = ref('Выбери игрока...')
 
-   const selectPlayer = (name: string) => {
-      inputValue.value = name
+   const selectPlayer = (name: string | undefined) => {
+      inputValue.value = name ?? ''
       isDisable.value = false
    }
    const onChangValue = (v: string) => {

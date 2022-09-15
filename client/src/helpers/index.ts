@@ -5,8 +5,19 @@ import type { Event, Team, Teams } from '@/assets/ts/interfaces/event-interface'
 const cities: string[] = ['Москва', 'Санкт-Петербург', 'Екатеринбург', 'Воронеж', 'Самара', 'Грозный']
 
 export function shortName(teamName: string): string {
-   let shortTeamName = teamName.replace(/(ПФК\s|ФК\s)/g, '')
-   return cutTeamCity(shortTeamName, cities)
+   let shortTeamName = cutTeamPrefix(teamName)
+   shortTeamName = cutTeamCity(shortTeamName, cities)
+   shortTeamName = shortTeamName.includes(' ')
+      ? shortTeamName
+           .split(' ')
+           .map((word, i) => (i == 0 ? `${word.charAt(0)}.` : word))
+           .join(' ')
+      : shortTeamName
+   return shortTeamName
+}
+
+function cutTeamPrefix(teamName: string): string {
+   return teamName.replace(/(ПФК\s|ФК\s)/g, '')
 }
 
 function cutTeamCity(teamName: string, cities: string[]): string {

@@ -8,7 +8,7 @@
             <input v-model="authData.last_name" type="text" placeholder="Фамилия" name="last_name" />
             <input v-model="authData.password" type="password" placeholder="Пароль" name="password" />
             <input v-model="authData.password_confirm" type="password" placeholder="Повторите пароль" name="password_check" />
-            <button class="btn btn-primary" type="submit" @click.prevent="tryRegistration">Зарегистрироваться</button>
+            <a-button type="submit" @click.prevent="tryRegistration" text="Зарегистрироваться" />
          </form>
          <router-link to="login">войти</router-link>
       </div>
@@ -19,6 +19,7 @@
    import type { Player } from '@/assets/ts/interfaces/player-interface'
    import { usePlayerStore } from '@/stores/player'
    import { reactive } from 'vue'
+
    const authData = reactive({
       email: '',
       name: '',

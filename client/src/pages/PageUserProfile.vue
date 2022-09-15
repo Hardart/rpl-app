@@ -1,37 +1,42 @@
 <script setup lang="ts">
+   import AUserBets from '../components/A-UserBets.vue'
+   import AAccordeon from '../components/UI/A-Accordeon.vue'
    import { useEventsStore, usePlayerStore } from '@/stores'
    import router from '@/router'
-   import AUserBets from '../components/A-UserBets.vue'
    import Icons from '@/features/Icons'
-   const user = usePlayerStore().player
+   const playerStore = usePlayerStore()
+   const user = playerStore.player
 
    const logOut = () => {
-      usePlayerStore().logout()
+      playerStore.logout()
       router.push('/')
    }
 
    const accessRoles = ['super-admin', 'admin']
    const userRole = user?.role ? user.role : ''
+   const btnText = useEventsStore().isLoading ? 'Loading...' : 'Обновить данные о матчах'
 </script>
 
 <template>
-   <div class="action-btns">
-      <button v-if="accessRoles.includes(userRole)" class="btn btn-danger" :disabled="useEventsStore().isLoading" @click="useEventsStore().update">
-         {{ useEventsStore().isLoading ? 'Loading...' : 'Обновить данные о матчах' }}
-      </button>
-      <button class="btn btn-icon btn-secondary" @click="logOut" v-html="Icons['sign-out']"></button>
-   </div>
-   <div class="player">
-      <div class="player__points">
-         <h3>Количество набранных очков: {{ user?.points }}</h3>
+   <div>
+      <div class="action-btns">
+         <a-button color="danger" :disabled="useEventsStore().isLoading" @click="useEventsStore().update" :text="btnText" v-if="accessRoles.includes(userRole)" />
+         <a-button color="success" :icon="Icons['sign-out']" isRound="true" @click="logOut" />
       </div>
+      <div class="player">
+         <div class="player__points">
+            <h3>Количество набранных очков: {{ user?.points }}</h3>
+         </div>
+      </div>
+      <Suspense>
+         <!-- main content -->
+         <AUserBets />
+         <!-- loading state -->
+         <template #fallback> Загрузка... </template>
+      </Suspense>
+
+      <AAccordeon :items="useEventsStore().finished" />
    </div>
-   <Suspense>
-      <!-- main content -->
-      <AUserBets />
-      <!-- loading state -->
-      <template #fallback> Загрузка... </template>
-   </Suspense>
 </template>
 
 <style lang="scss">

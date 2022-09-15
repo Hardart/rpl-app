@@ -15,9 +15,39 @@
    </Teleport>
    <section class="section">
       <div class="container">
-         <RouterView />
+         <router-view v-slot="{ Component }">
+            <transition name="slide" mode="out-in">
+               <component :is="Component" />
+            </transition>
+         </router-view>
       </div>
    </section>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+   .slide-enter-active {
+      animation: slideIn 0.3s ease;
+   }
+
+   .slide-leave-active {
+      animation: slideOut 0.3s ease;
+   }
+
+   @keyframes slideIn {
+      from {
+         opacity: 0;
+      }
+      to {
+         opacity: 1;
+      }
+   }
+
+   @keyframes slideOut {
+      from {
+         opacity: 1;
+      }
+      to {
+         opacity: 0;
+      }
+   }
+</style>

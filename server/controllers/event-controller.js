@@ -10,10 +10,10 @@ class EventController {
       }
    }
 
-   async loadFromMongo(req, res, next) {
+   async loadStandingsInfo(req, res, next) {
       try {
-         const events = await eventService.loadFromMongo()
-         return res.status(200).json(events)
+         const standingsTable = await eventService.getStandingsData()
+         return res.status(200).json(standingsTable)
       } catch (error) {
          next(error)
       }

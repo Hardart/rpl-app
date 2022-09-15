@@ -10,6 +10,12 @@
    </div>
 </template>
 
+<script lang="ts">
+   export default {
+      name: 'A-Select',
+   }
+</script>
+
 <script setup lang="ts">
    import type { Player } from '@/assets/ts/interfaces/player-interface'
    import Icons from '@/features/Icons'
@@ -27,11 +33,11 @@
    }>()
 
    const emits = defineEmits<{
-      (e: 'selected', player: string): void
+      (e: 'selected', player: string | undefined): void
       (e: 'inputValue', value: string): void
    }>()
 
-   const selectPlayer = (playerName: string) => {
+   const selectPlayer = (playerName: string | undefined) => {
       emits('selected', playerName)
       isOpen.value = !isOpen.value
    }
