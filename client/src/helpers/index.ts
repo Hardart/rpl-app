@@ -4,6 +4,8 @@ import type { Event, Team, Teams } from '@/assets/ts/interfaces/event-interface'
 
 const cities: string[] = ['Москва', 'Санкт-Петербург', 'Екатеринбург', 'Воронеж', 'Самара', 'Грозный']
 
+export const delay = (ms: number = 0) => new Promise((res) => setTimeout(() => res(true), ms))
+
 export function shortName(teamName: string): string {
    let shortTeamName = cutTeamPrefix(teamName)
    shortTeamName = cutTeamCity(shortTeamName, cities)
@@ -14,17 +16,6 @@ export function shortName(teamName: string): string {
            .join(' ')
       : shortTeamName
    return shortTeamName
-}
-
-function cutTeamPrefix(teamName: string): string {
-   return teamName.replace(/(ПФК\s|ФК\s)/g, '')
-}
-
-function cutTeamCity(teamName: string, cities: string[]): string {
-   cities.forEach((city) => {
-      teamName = teamName.includes(city) ? teamName.replace(` ${city}`, '') : teamName
-   })
-   return teamName
 }
 
 export function checkDateOfGame(eventDate: number): boolean {
@@ -89,4 +80,15 @@ export function createEmptyBet(eventID: number): NewBet {
 
 function isPlayerMadeBet(eventID: number, bets: number[]): boolean {
    return bets.includes(eventID)
+}
+
+function cutTeamPrefix(teamName: string): string {
+   return teamName.replace(/(ПФК\s|ФК\s)/g, '')
+}
+
+function cutTeamCity(teamName: string, cities: string[]): string {
+   cities.forEach((city) => {
+      teamName = teamName.includes(city) ? teamName.replace(` ${city}`, '') : teamName
+   })
+   return teamName
 }

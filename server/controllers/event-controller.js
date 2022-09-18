@@ -1,9 +1,9 @@
 const eventService = require('../service/events-service')
 
 class EventController {
-   async loadAll(req, res, next) {
+   async updateAll(req, res, next) {
       try {
-         await eventService.getAllEvents()
+         await eventService.updateAllEvents()
          return res.status(200).json({ status: 'ok' })
       } catch (error) {
          next(error)
@@ -14,6 +14,14 @@ class EventController {
       try {
          const standingsTable = await eventService.getStandingsData()
          return res.status(200).json(standingsTable)
+      } catch (error) {
+         next(error)
+      }
+   }
+   async loaAllEvents(req, res, next) {
+      try {
+         const data = await eventService.loadAll()
+         return res.status(200).json(data)
       } catch (error) {
          next(error)
       }

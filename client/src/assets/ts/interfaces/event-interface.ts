@@ -1,3 +1,5 @@
+import type { Ref } from 'vue'
+
 export type EventSortBy = 'asc' | 'desc'
 export interface Event {
    id: number
@@ -35,4 +37,10 @@ export interface TeamStanding {
    losses_total: string
    points_total: string
    position: number
+}
+
+export interface AccordeonEvents {
+   open: Ref<boolean>
+   round: number
+   events: Event[]
 }

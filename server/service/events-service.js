@@ -2,7 +2,7 @@ const eventsApi = require('../api/events-api')
 const { Match } = require('../models')
 
 class EventService {
-   async getAllEvents() {
+   async updateAllEvents() {
       try {
          await Match.collection.drop()
          let i = 1
@@ -39,6 +39,14 @@ class EventService {
       })
 
       return standingsTable
+   }
+
+   async loadAll() {
+      try {
+         const past = await this.finished()
+         const next = await this.notStarted()
+         return { past, next }
+      } catch (error) {}
    }
 
    // set limit

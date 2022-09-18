@@ -1,7 +1,7 @@
 <template>
    <Transition name="modal">
       <div class="settings" v-if="isOpen">
-         <span class="btn btn-close" @click="openAdminSettings" v-html="Icons.close"></span>
+         <span class="btn btn-close" @click="isOpen = !isOpen" v-html="Icons.close"></span>
          <div class="section">
             <div class="container">
                <ASettingsNavList />
@@ -14,7 +14,7 @@
 <script setup lang="ts">
    import Icons from '@/features/Icons'
    import ASettingsNavList from './A-SettingsNavList.vue'
-   import { openAdminSettings, isOpen } from '@/features/adminSettings'
+   import { changeState, isOpen } from '@/features/adminSettings'
 </script>
 
 <style lang="scss">

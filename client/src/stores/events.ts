@@ -1,25 +1,41 @@
 import { defineStore } from 'pinia'
 import eventsAPI from '@/api/events-api'
-import type { Event, EventSortBy, TeamStanding } from '@/assets/ts/interfaces/event-interface'
+import { ref } from 'vue'
+import type { AccordeonEvents, Event, EventSortBy, TeamStanding } from '@/assets/ts/interfaces/event-interface'
 
 export const useEventsStore = defineStore({
    id: 'events',
    state: () => ({
       all: [] as Event[],
       finished: [] as Event[],
-      limited: [] as Event[],
       next: [] as Event[],
       standingsTable: [] as TeamStanding[],
       isLoading: false,
-      limit: 8,
    }),
    getters: {
       getNext: (state) => state.next,
-
       getEventByID: (state) => (betID: number) => state.all.find((event) => event.id == betID) as Event,
       getEventScore: (state) => (betID: number) => {
          const e = state.all.find((event) => event.id == betID)
          return `${e?.home_score}${e?.away_score}`
+      },
+      getEventsForAccordeon: (state) => {
+         let accordeon: AccordeonEvents[] = []
+         const finished = state.finished
+         for (let i = finished[0].round; i > 0; i--) {
+            let roundEvents = {
+               round: 0,
+               events: [] as Event[],
+            }
+            finished.forEach((e) => {
+               if (e.round == i) {
+                  roundEvents.round = i
+                  roundEvents.events.push(e)
+               }
+            })
+            accordeon.push({ open: ref(false), ...roundEvents })
+         }
+         return accordeon
       },
    },
    actions: {
@@ -32,7 +48,7 @@ export const useEventsStore = defineStore({
       async loadPastRounds() {
          const res = await eventsAPI.past()
          this.finished = res
-         this.limited = res.filter((_, i) => i < this.limit)
+
          this.all = [...this.all, ...res]
       },
       async loadAll() {
@@ -52,12 +68,9 @@ export const useEventsStore = defineStore({
          await this.loadAll()
          this.isLoading = false
       },
+      // пока не используется
       sortFutureEvents(sortBy: EventSortBy) {
          this.next.sort((a: Event, b: Event) => (sortBy === 'asc' ? a.start_at - b.start_at : b.start_at - a.start_at))
-      },
-      addMoreFinished(limit: number = 8) {
-         this.limit += limit
-         this.limited = this.finished.filter((_, i) => i < this.limit)
       },
    },
 })

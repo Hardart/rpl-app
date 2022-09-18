@@ -1,5 +1,7 @@
 <template>
-   <ARPLTeamsTable />
+   <KeepAlive>
+      <ARPLTeamsTable />
+   </KeepAlive>
 </template>
 
 <script setup lang="ts">

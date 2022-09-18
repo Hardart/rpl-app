@@ -1,7 +1,7 @@
 .teams {
    @include display-flex();
    width: 100%;
-   padding: 15px 10px;
+   padding: 0 10px 10px;
    
 }
 .team {
@@ -30,11 +30,10 @@
    &__score {
       font-size: 3rem;
       font-weight: 600;
+      line-height: 1;
       border-radius: 10px;
       padding: 0 16px 2px;
    }
 
-   > * {
-      margin: 0 0 10px;
-   }
+   
 }

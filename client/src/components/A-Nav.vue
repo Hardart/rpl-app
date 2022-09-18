@@ -10,7 +10,7 @@
          <li v-else class="nav-list__item auth">
             <RouterLink to="login" v-html="Icons['sign-in']"></RouterLink>
          </li>
-         <li v-if="usePlayerStore().player?.role == 'super-admin'" class="btn btn-icon btn-secondary" @click="openAdminSettings" v-html="Icons.cog"></li>
+         <li v-if="usePlayerStore().player?.role == 'super-admin'" class="btn btn-icon btn-secondary" @click="isOpen = !isOpen" v-html="Icons.cog"></li>
       </ul>
    </nav>
    <Teleport to="body">
@@ -22,7 +22,7 @@
    import ASettingsContainer from './admin/A-SettingsContainer.vue'
    import type { MainMenu } from '@/assets/ts/interfaces/menu-interface'
    import { useMenuStore, usePlayerStore } from '@/stores'
-   import { openAdminSettings } from '@/features/adminSettings'
+   import { isOpen } from '@/features/adminSettings'
    import Icons from '@/features/Icons'
 
    const menu: MainMenu[] = useMenuStore().getMainMenu

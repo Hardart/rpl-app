@@ -24,3 +24,12 @@
 .remove-p {
    padding: 0 !important;
 }
+
+@each $value, $size in $spacing {
+   .p-#{$value} {
+      padding: $size;
+   }
+   .m-#{$value} {
+      margin: $size;
+   }
+}

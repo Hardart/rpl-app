@@ -8,12 +8,13 @@ interface Box {
 
 export default {
    async all() {
-      const { data } = await instance.get<Box>('/mongo')
+      const { data } = await instance.get<Box>('/load-all')
+      console.log(data)
       return data
    },
 
    async update() {
-      const { data } = await instance.get('/all')
+      const { data } = await instance.get('/update')
       return data
    },
 

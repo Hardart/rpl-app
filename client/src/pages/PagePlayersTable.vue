@@ -1,5 +1,7 @@
 <template>
-   <APlayersTable />
+   <KeepAlive>
+      <APlayersTable />
+   </KeepAlive>
 </template>
 
 <script setup lang="ts">
