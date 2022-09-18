@@ -1,5 +1,5 @@
 import type { Event } from '@/assets/ts/interfaces/event-interface'
-import { ref, type Ref } from 'vue'
+import { isRef, ref, type Ref } from 'vue'
 
 interface MenuItem {
    id: number
@@ -30,17 +30,8 @@ export const setActiveComp = (menuItem: MenuItem) => {
 }
 
 export const isOpen = ref(false)
-export const openAdminSettings = () => (isOpen.value = !isOpen.value)
+export const changeState = (state: boolean) => {
+   if (isRef(state)) return (state.value = !state.value)
 
-export function setupAccordeonItems(data: Event[] | null): AccordeonItem[] {
-   let accordeonItems: AccordeonItem[] = []
-
-   data?.forEach((item: Event) => {
-      const itemProp = {
-         open: ref(false),
-         data: item,
-      }
-      accordeonItems.push(itemProp)
-   })
-   return accordeonItems
+   return (state = !state)
 }
