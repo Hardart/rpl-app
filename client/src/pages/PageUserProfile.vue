@@ -3,7 +3,7 @@
    import { useEventsStore, usePlayerStore } from '@/stores'
    import router from '@/router'
    import Icons from '@/features/Icons'
-   import ACheckbox from '../components/UI/A-Checkbox.vue'
+
    const playerStore = usePlayerStore()
    const eventStore = useEventsStore()
    const user = playerStore.player
@@ -19,7 +19,6 @@
 
 <template>
    <div>
-      <ACheckbox />
       <div class="action-btns">
          <a-button
             color="danger"

@@ -90,3 +90,7 @@ export function createEmptyBet(eventID: number): NewBet {
 function isPlayerMadeBet(eventID: number, bets: number[]): boolean {
    return bets.includes(eventID)
 }
+
+export function changeState(value: boolean): boolean {
+   return (value = !value)
+}
