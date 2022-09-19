@@ -1,6 +1,5 @@
 <script setup lang="ts">
-   import AUserBets from '../components/A-UserBets.vue'
-   import AAccordeon from '../components/UI/A-Accordeon.vue'
+   import AUserBets from '@/components/A-UserBets.vue'
    import { useEventsStore, usePlayerStore } from '@/stores'
    import router from '@/router'
    import Icons from '@/features/Icons'
@@ -34,8 +33,6 @@
          <!-- loading state -->
          <template #fallback> Загрузка... </template>
       </Suspense>
-
-      <AAccordeon :items="useEventsStore().finished" />
    </div>
 </template>
 
