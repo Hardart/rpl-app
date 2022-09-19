@@ -1,17 +1,21 @@
 <template>
-   <label class="switch" for="checkbox">
-      <input ref="sliderCheckbox" type="checkbox" id="checkbox" checked />
-      <div class="slider round" @click="state"></div>
+   <label class="switch" :for="`checkbox_${id}`">
+      <input @change="handleCheckbox($event.target as EventTarget, id)" :name="name" type="checkbox" :id="`checkbox_${id}`" />
+      <div class="slider"></div>
    </label>
 </template>
 
 <script setup lang="ts">
-   import { ref, type Ref } from 'vue'
-
-   const sliderCheckbox: Ref<HTMLFormElement | null> = ref(null)
-   const state = () => {
-      if (!sliderCheckbox.value) return
-      console.log(!sliderCheckbox.value.checked)
+   defineProps<{
+      id: number
+      name: string
+   }>()
+   const emits = defineEmits<{
+      (e: 'check', isChecked: boolean, id: number): void
+   }>()
+   const handleCheckbox = (e: EventTarget, id: number) => {
+      const check = (e as HTMLInputElement).checked
+      emits('check', check, id)
    }
 </script>
 
@@ -19,17 +23,17 @@
    .switch {
       display: inline-block;
       position: relative;
-      width: 60px;
-      height: 34px;
+      min-width: 60px;
+      height: 32px;
 
       input {
          display: none;
 
          &:checked + .slider {
-            background-color: $success;
+            background-color: $warning;
 
             &:before {
-               transform: translateX(26px);
+               transform: translateX(100%);
             }
          }
       }
@@ -40,24 +44,20 @@
          left: 0;
          bottom: 0;
          right: 0;
+         border-radius: 34px;
          transition: 0.4s;
          background-color: #ccc;
+         z-index: 999;
          cursor: pointer;
-
-         &.round {
-            border-radius: 34px;
-            &:before {
-               border-radius: 50%;
-            }
-         }
 
          &:before {
             content: '';
             position: absolute;
             width: 26px;
             height: 26px;
-            bottom: 4px;
+            bottom: 3px;
             left: 4px;
+            border-radius: 50%;
             background-color: #fff;
             transition: 0.4s;
          }
