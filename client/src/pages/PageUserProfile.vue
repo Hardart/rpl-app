@@ -3,7 +3,9 @@
    import { useEventsStore, usePlayerStore } from '@/stores'
    import router from '@/router'
    import Icons from '@/features/Icons'
+
    const playerStore = usePlayerStore()
+   const eventStore = useEventsStore()
    const user = playerStore.player
 
    const logOut = () => {
@@ -13,13 +15,18 @@
 
    const accessRoles = ['super-admin', 'admin']
    const userRole = user?.role ? user.role : ''
-   const btnText = useEventsStore().isLoading ? 'Loading...' : 'Обновить данные о матчах'
 </script>
 
 <template>
    <div>
       <div class="action-btns">
-         <a-button color="danger" :disabled="useEventsStore().isLoading" @click="useEventsStore().update" :text="btnText" v-if="accessRoles.includes(userRole)" />
+         <a-button
+            color="danger"
+            :disabled="eventStore.isLoading"
+            @click="eventStore.update"
+            :text="eventStore.isLoading ? 'Loading...' : 'Обновить данные о матчах'"
+            v-if="accessRoles.includes(userRole)"
+         />
          <a-button color="success" :icon="Icons['sign-out']" isRound="true" @click="logOut" />
       </div>
       <div class="player">

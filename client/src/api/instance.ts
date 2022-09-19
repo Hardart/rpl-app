@@ -1,6 +1,6 @@
 import JWT from '@/features/Token-class'
 import router from '@/router'
-import axios, { Axios, AxiosError, type AxiosResponse } from 'axios'
+import axios, { AxiosError, type AxiosResponse } from 'axios'
 
 const instance = axios.create({
    baseURL: 'http://localhost:80',

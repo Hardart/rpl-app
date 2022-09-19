@@ -92,3 +92,7 @@ function cutTeamCity(teamName: string, cities: string[]): string {
    })
    return teamName
 }
+
+export function changeState(value: boolean): boolean {
+   return (value = !value)
+}

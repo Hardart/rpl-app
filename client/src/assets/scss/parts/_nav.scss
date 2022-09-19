@@ -73,12 +73,28 @@ nav {
    }
 
    &__item {
+      position: relative;
       padding: 5px 10px;
       cursor: pointer;
 
       &:hover {
          @include set-colors($primary, 10%);
-         
+      }
+
+      &.active {
+         color: $light;
+
+         &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 50%;
+            left: 0;
+            width: 4px;
+            height: 60%;
+            transform: translateY(50%);
+            background-color: $warning;
+         }
       }
    }
 }
