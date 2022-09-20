@@ -24,7 +24,7 @@
             color="danger"
             :disabled="eventStore.isLoading"
             @click="eventStore.update"
-            :text="eventStore.isLoading ? 'Loading...' : 'Обновить данные о матчах'"
+            :text="eventStore.isLoading ? 'Загрузка данных...' : 'Обновить данные о матчах'"
             v-if="accessRoles.includes(userRole)"
          />
          <a-button color="success" :icon="Icons['sign-out']" isRound="true" @click="logOut" />

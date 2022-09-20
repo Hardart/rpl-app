@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-   import ATeamCard from '../components/A-TeamCard.vue'
+   import ATeamCard from '@/components/A-TeamCard.vue'
    import { useEventsStore, useBetStore, usePlayerStore } from '@/stores'
    import { checkBetStatus, eventWithNoBets } from '@/helpers'
 

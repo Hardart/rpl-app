@@ -2,7 +2,7 @@ import { ref, type Ref } from 'vue'
 import { usePlayerStore, useEventsStore, useAlertStore } from '@/stores'
 import type { NewBet } from '@/assets/ts/interfaces/bet-interface'
 import { BetButtonText } from '@/assets/ts/enums/status-enum'
-import { checkDateOfGame } from '@/helpers'
+import { checkDateOfGame, delay } from '@/helpers'
 
 export default class Bet {
    cardID: Ref<number>
@@ -23,14 +23,26 @@ export default class Bet {
       this.buttonText = ref('Сделать ставку')
    }
 
-   show(id: number) {
+   static createEmptyBet(eventID: number): NewBet {
+      return {
+         event_id: eventID,
+         status: false,
+         home_score: 3,
+         away_score: 3,
+         winner_code: null,
+         bet_code: 3,
+      }
+   }
+
+   async show(id: number) {
       if (!this.isDatePass(id)) {
          this.isDisabled.value = true
-         this.buttonText.value = 'Автоматическая ставка'
+         this.buttonText.value = BetButtonText.default
          return useAlertStore().addAlert('Ошибка', 'ставку сделать нельзя, игра уже началась')
       }
       this.open.value = true
-      setTimeout(() => (this.cardID.value = id))
+      await delay()
+      this.cardID.value = id
    }
 
    async accept() {
@@ -39,18 +51,16 @@ export default class Bet {
       await usePlayerStore().makeBet(this.newBet)
 
       this.cardID.value = 0
-      setTimeout(() => {
-         this.open.value = false
-      }, this.closeTimeout)
+      await delay(this.closeTimeout)
+      this.open.value = false
    }
 
-   cancel() {
+   async cancel() {
       this.cardID.value = 0
-      setTimeout(() => {
-         this.open.value = false
-         this.scoreHome.value = 0
-         this.scoreAway.value = 0
-      }, this.closeTimeout)
+      await delay(this.closeTimeout)
+      this.open.value = false
+      this.scoreHome.value = 0
+      this.scoreAway.value = 0
    }
 
    increaseHome() {
