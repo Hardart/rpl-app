@@ -1,9 +1,9 @@
 <template>
    <Transition name="modal">
       <div class="settings" v-if="isOpen">
-         <span class="btn btn-close" @click="isOpen = !isOpen" v-html="Icons.close"></span>
          <div class="section">
             <div class="container">
+               <a-close-button @click="closeModal" color="primary" />
                <ASettingsNavList />
             </div>
          </div>
@@ -12,9 +12,13 @@
 </template>
 
 <script setup lang="ts">
-   import Icons from '@/features/Icons'
    import ASettingsNavList from './A-SettingsNavList.vue'
-   import { changeState, isOpen } from '@/features/adminSettings'
+   import { isOpen, isOpenMobileMenu } from '@/features/adminSettings'
+
+   const closeModal = () => {
+      isOpen.value = false
+      isOpenMobileMenu.value = false
+   }
 </script>
 
 <style lang="scss">
@@ -28,6 +32,7 @@
       left: 0;
       z-index: 1000;
       transition: all 0.3s ease;
+      overflow-y: auto;
    }
 
    .modal-enter-from {

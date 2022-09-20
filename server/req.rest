@@ -44,7 +44,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 
 
 ### ALL PLAYERS
-GET  https://rpl-app-production.up.railway.app/all-players
+GET  http://localhost:80/all-players
 
 
 ### SERVER - players

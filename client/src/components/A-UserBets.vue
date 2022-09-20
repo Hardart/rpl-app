@@ -1,5 +1,5 @@
 <template>
-   <div class="grid childs-w-100" v-if="betStore.myBets.length > 0">
+   <div class="grid childs-w-100 childs-w-50@s childs-w-33@l" v-if="betStore.myBets.length > 0">
       <div v-for="bet in betStore.myBets">
          <div class="bet-card">
             <ATeamCard :event="event(bet.event_id)" :show-bet-score="true" />

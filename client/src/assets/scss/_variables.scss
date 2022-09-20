@@ -14,15 +14,27 @@ $muted:                              #d1e8e2 !default;
 $danger:                             #9d3a3a !default;
 
 
+$breakpoint-small:                   640px !default;  // Phone landscape
+$breakpoint-medium:                  960px !default;  // Tablet Landscape
+$breakpoint-large:                   1200px !default; // Desktop
+$breakpoint-xlarge:                  1600px !default; // Large Screens
+
+$breakpoints: (
+   s:           $breakpoint-small,
+   m:           $breakpoint-medium,
+   l:           $breakpoint-large,
+   xl:          $breakpoint-xlarge,
+) !default;
+
 
 $theme-colors: (
-  primary:     $primary,
-  secondary:   $secondary,
-  success:     $success,
-  warning:     $warning,
-  light:       $light,
-  dark:        $dark,
-  danger:      $danger,
+   primary:     $primary,
+   secondary:   $secondary,
+   success:     $success,
+   warning:     $warning,
+   light:       $light,
+   dark:        $dark,
+   danger:      $danger,
 ) !default;
 
 
@@ -41,4 +53,21 @@ $spacing: (
    20:  20px,
    30:  30px,
    40:  40px,
+) !default;
+
+$gaps: (
+   s:   15px,
+   m:   20px,
+   l:   30px,
+   xl:  40px,
+) !default;
+
+$width-values: (
+   20:  20%,
+   25:  25%,
+   33:  33.33%,
+   40:  40%,
+   50:  50%,
+   75:  75%,
+   100: 100%,
 ) !default;

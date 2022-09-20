@@ -27,9 +27,11 @@ export const setActiveComp = (menuItem: MenuItem) => {
    comp.value.id = menuItem.id
    comp.value.activeSlug = menuItem.slug
    comp.value.activeTitle = menuItem.title
+   isOpenMobileMenu.value = false
 }
 
 export const isOpen = ref(false)
+export const isOpenMobileMenu = ref(false)
 export const changeState = (state: boolean) => {
    if (isRef(state)) return (state.value = !state.value)
 

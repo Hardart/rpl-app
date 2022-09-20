@@ -1,9 +1,7 @@
 .btn {
    position: relative;
    display: inline-block;
-   appearance: none;
    padding: 8px 20px;
-   backface-visibility: hidden;
    color: #fff;
    background-color: hsl(214, 84%, 56%);
    font-size: 1rem;
@@ -11,15 +9,16 @@
    line-height: 1;
    border-style: none;
    outline: none;
-   overflow: hidden;
    text-align: center;
    text-decoration: none;
-   transition: all .3s;
    transform: translate3d(0, 0, 0);
+   transition: all .3s;
    user-select: none;
+   appearance: none;
    -webkit-user-select: none;
+   backface-visibility: hidden;
    touch-action: manipulation;
-   vertical-align: top;
+   overflow: hidden;
    white-space: nowrap;   
   
    &:hover {
@@ -47,14 +46,11 @@
       }
    }
 
-   
-
    &:not(:disabled) {
       cursor: pointer;
    }
 
    &#{&}-close {
-      background-color: transparent;
       position: absolute;
       display: flex;
       justify-content: center;
@@ -63,6 +59,7 @@
       right: 0;
       padding: 5px;
       margin: 20px;
+      border-radius: 3px;
       z-index: 1001;
    }
 
@@ -97,6 +94,10 @@
       }
    }
 
+   &-transparent {
+      background-color: transparent;
+   }
+
    &:disabled {
       color: shade($muted, 30%);
       background-color: $muted;
@@ -104,5 +105,6 @@
       box-shadow: none;      
    }
 }
+
 
 

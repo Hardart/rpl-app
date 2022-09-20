@@ -71,7 +71,11 @@ export const usePlayerStore = defineStore('user', {
 
       async deleteOne(email: string) {
          const res = await playerAPI.delete(email)
-         if (res.email) return useAlertStore().addAlert('Информация', `Пользователь ${res.last_name} ${res.name.charAt(0)}. удалён`)
+         if (res.email) {
+            if (!this.players) return useAlertStore().addAlert('Ошибка', 'Игроков нет в Pinia')
+            this.players = this.players.filter((player) => player.email != res.email)
+            return useAlertStore().addAlert('Информация', `Пользователь ${res.last_name} ${res.name.charAt(0)}. удалён`)
+         }
          return useAlertStore().addAlert('Ошибка', 'Проблемы с удалением игрока')
       },
 
@@ -86,6 +90,7 @@ export const usePlayerStore = defineStore('user', {
             useAlertStore().addAlert('Ошибка', res.message)
             return []
          }
+         this.players = res.players
          return res.players
       },
    },

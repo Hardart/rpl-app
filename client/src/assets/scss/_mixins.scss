@@ -29,48 +29,19 @@
    }
 }
 
-
-
-@mixin row-cols($count, $padding-left: $cards-gap-x) {
-   > div {
-      width: divide(100%, $count);
-      padding-left: $padding-left;
-      margin-bottom: 40px;
-      
-   }
-}
-
+//colors
 @mixin set-colors ($color, $percentage){
    @if lightness($color) > 50% {
       color: tint($secondary, $percentage);
-      background-color:  shade($color, $percentage);
+      background-color: shade($color, $percentage);
    } @else {
       color: shade($muted, $percentage);
       background-color: tint($color, $percentage);
    }
 }
 
-@mixin row-cols-margin($count) {
-   > div:nth-child(#{$count}) {
-     @if $count > 1 {
-         margin-top: 90px * ($count - 1);
-     }
-   }
-}
-
-@mixin make-columns($columns: $grid-columns) {
-   @for $i from 1 through $grid-row-columns {
-      .row-cards-#{$i} {
-         @include row-cols($i);
-      }
-      .row.massonry {
-         @include row-cols-margin($i);
-      }
-   }
-}
 
 //fonts
-
 @mixin font($weight: 400, $size: 22px, $style: normal) {
    font-style: $style;
    font-weight: $weight;
@@ -78,15 +49,11 @@
 }
 
 //text
-
 @mixin text-center {
-   .text-center {
-      text-align: center;
-   }
+   text-align: center;
 }
 
 //animation
-
 @mixin animate($duration: 0.3s) {
    transition: all $duration ease-in-out;
 }

@@ -1,13 +1,8 @@
 @media (min-width: 1600px) {
    .container {
-      padding: 0 40px;
-      width: 1600px;
+      max-width: 1600px;
       margin: auto;
-   }
-   .grid.childs-w-100 > * {
-      width: 25%;
-   }
-   
+   }   
    .login__panel {
       width: 25%;     
    }

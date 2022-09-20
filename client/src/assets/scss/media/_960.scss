@@ -1,23 +1,7 @@
-@media (min-width: 800px) {
-   .section {
-      padding: 40px 0;
-   }
-
-   .mobile-nav {
-      display: none;
-   }
-
-   nav,
-   .container {
+@media (min-width: $breakpoint-medium) {
+  
+   nav {
       padding: 0 40px;
-   }
-
-   .grid {
-   
-      
-      &.childs-w-100 > * {
-         width: 50%;
-      }
    }
 
    .login__panel {
@@ -68,18 +52,16 @@
          font-size: 1.4rem;
       }
       &__score {
-         font-size: 2.2rem;
+         font-size: 2.4rem;
       }
    }
    
    .btn {
       padding: 10px 22px;     
-    }
-   
+   }
 
-    .table {
+   .table {
       display: table;
-      width: 100%;
       border-collapse: collapse;
       border-spacing: 0;
    
@@ -107,6 +89,47 @@
    
             &:hover {
                background-color: $primary;
+            }
+         }
+      }
+   }
+
+   .settings-nav {
+      
+      font-size: 1.1rem;
+   
+      &__title {
+         padding-left: 10px;
+         padding-bottom: 5px;
+         margin-bottom: 10px;
+         border-bottom: solid 1px $primary;
+         text-transform: uppercase;
+         opacity: 0.5;
+         cursor: default;
+      }
+   
+      &__item {
+         position: relative;
+         padding: 5px 10px;
+         cursor: pointer;
+   
+         &:hover {
+            @include set-colors($primary, 10%);
+         }
+   
+         &.active {
+            color: $light;
+   
+            &::after {
+               content: '';
+               display: block;
+               position: absolute;
+               bottom: 50%;
+               left: 0;
+               width: 4px;
+               height: 60%;
+               transform: translateY(50%);
+               background-color: $warning;
             }
          }
       }

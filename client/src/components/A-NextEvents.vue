@@ -1,5 +1,5 @@
 <template>
-   <div class="grid childs-w-100">
+   <div class="grid childs-w-100 childs-w-50@s childs-w-33@l">
       <template v-for="event in events">
          <div v-if="event.status == EventStatus.notStarted && checkDateOfGame(event.start_at)">
             <ABetCard :event="event" />

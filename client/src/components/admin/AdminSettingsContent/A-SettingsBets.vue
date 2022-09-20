@@ -1,6 +1,5 @@
 <template>
-   <h1>{{ name }}</h1>
-
+   <ASettingsTitle>{{ name }}</ASettingsTitle>
    <div class="mb-10" v-for="player in data?.players">
       <h3 @click="myBets">{{ player.full_name }}</h3>
       <template v-for="betArray in bet.data">
@@ -12,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+   import ASettingsTitle from '@/components/UI/A-SettingsTitle.vue'
    import { getBets, getUsers } from '@/api/fetch'
    import type { PlayerBets } from '@/assets/ts/interfaces/bet-interface'
    import { reactive } from 'vue'

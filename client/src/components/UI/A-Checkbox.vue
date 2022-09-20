@@ -47,7 +47,6 @@
          border-radius: 34px;
          transition: 0.4s;
          background-color: #ccc;
-         z-index: 999;
          cursor: pointer;
 
          &:before {

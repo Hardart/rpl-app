@@ -21,13 +21,14 @@
    <div>
       <div class="action-btns">
          <a-button
-            color="danger"
-            :disabled="eventStore.isLoading"
+            color="success"
             @click="eventStore.update"
-            :text="eventStore.isLoading ? 'Загрузка данных...' : 'Обновить данные о матчах'"
+            :text="eventStore.isLoading ? 'Загрузка данных...' : 'Обновить данные'"
+            :disabled="eventStore.isLoading"
+            :roundBorder="5"
             v-if="accessRoles.includes(userRole)"
          />
-         <a-button color="success" :icon="Icons['sign-out']" isRound="true" @click="logOut" />
+         <a-button color="primary" :icon="Icons['sign-out']" round="y" @click="logOut" />
       </div>
       <div class="player">
          <div class="player__points">

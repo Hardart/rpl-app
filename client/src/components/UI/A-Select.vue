@@ -28,7 +28,7 @@
    }
 
    const props = defineProps<{
-      options: Player[]
+      options: Player[] | null
       modelValue: string
    }>()
 

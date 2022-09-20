@@ -1,5 +1,11 @@
 <template>
-   <button class="btn" :class="[{ 'btn-icon': isRound }, color ? `btn-${color}` : '']" v-html="icon + text"></button>
+   <button 
+      class="btn" 
+      :class="[{ 'btn-icon': round == 'y' }, 
+      color ? `btn-${color}` : '']" 
+      v-html="icon + text" 
+      :style="roundBorder ? `border-radius: ${roundBorder}px` : ''"
+   />
 </template>
 
 <script lang="ts">
@@ -9,21 +15,22 @@
 </script>
 
 <script setup lang="ts">
-   export type Colors = 'primary' | 'secondary' | 'warning' | 'success' | 'danger' | 'light' | 'dark'
-   export type Icon = 'true'
-   export interface Props {
-      clickFn?: undefined
+   type Colors = 'primary' | 'secondary' | 'warning' | 'success' | 'danger' | 'light' | 'dark' | 'transparent'
+   type BorderRound = 0 | 3 | 4 | 5 | 6 | 8 | 10 | 12
+   type isRound = 'y' | 'n'
+
+   interface PropsButton {
       color?: Colors
       icon?: string
-      isRound?: Icon
+      round?: isRound
       text?: string
+      roundBorder?: BorderRound
    }
-
-   const props = withDefaults(defineProps<Props>(), {
-      clickFn: undefined,
+   withDefaults(defineProps<PropsButton>(), {
       color: 'primary',
       text: '',
       icon: '',
+      roundBorder: 0,
    })
 </script>
 

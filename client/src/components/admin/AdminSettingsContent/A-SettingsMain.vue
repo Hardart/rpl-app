@@ -1,22 +1,24 @@
 <template>
-   <h1>{{ name }}</h1>
+   <ASettingsTitle>{{ name }}</ASettingsTitle>
    <div class="select-form">
-      <ASelect :options="players" @selected="selectPlayer" @input-value="onChangValue" v-model="inputValue" />
+      <ASelect :options="playerStore.players" @selected="selectPlayer" @input-value="onChangValue" v-model="inputValue" />
       <div>
-         <button @click="changeAdmin" class="btn btn-success" :disabled="isDisable">Изменить</button>
+         <AButton @click="changeAdmin" color="success" text="Изменить" :round-border="5" :disabled="isDisable" />
       </div>
    </div>
 </template>
 
 <script setup lang="ts">
+   import ASettingsTitle from '@/components/UI/A-SettingsTitle.vue'
    import ASelect from '@/components/UI/A-Select.vue'
+   import AButton from '@/components/UI/A-Button.vue'
    import { ref } from 'vue'
    import { useAlertStore, usePlayerStore } from '@/stores'
    defineProps<{
       name: string
    }>()
-
-   const players = await usePlayerStore().getAllPlayers()
+   const playerStore = usePlayerStore()
+   const players = await playerStore.getAllPlayers()
    const isDisable = ref(true)
    const inputValue = ref('Выбери игрока...')
 
@@ -33,7 +35,7 @@
       if (!players) return false
       const player = players.find((player) => player.full_name == inputValue.value)
       if (!player) return false
-      const res = await usePlayerStore().setNewAdmin(player.email)
+      const res = await playerStore.setNewAdmin(player.email)
       if (res.message) return useAlertStore().addAlert('Ошибка', res.message)
       useAlertStore().addAlert('Информация', `Новым администратором назначен ${player.full_name}`)
       inputValue.value = 'Выбери игрока...'

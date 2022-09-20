@@ -39,8 +39,10 @@ class UserService {
 
    async deleteUser(email) {
       const deletedUser = await User.findOneAndDelete({ email })
-      const deletedBets = await Bet.findOneAndDelete({ player_email: email })
-      if (deletedBets && deletedUser) return true
+      const bets = await Bet.find({ player_email: email })
+      if (!bets) return deletedUser
+      const deletedBets = await Bet.deleteOne({ player_email: email })
+      if (deletedBets && deletedUser) return deletedUser
       return false
    }
 
