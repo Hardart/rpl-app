@@ -12,12 +12,19 @@ $success:                            #116466 !default;
 $warning:                            #d9b08c !default;
 $muted:                              #d1e8e2 !default;
 $danger:                             #9d3a3a !default;
+$disable:                            #808191 !default;
+$disable-bg:                         #353340 !default;
 
 
 $breakpoint-small:                   640px !default;  // Phone landscape
 $breakpoint-medium:                  960px !default;  // Tablet Landscape
 $breakpoint-large:                   1200px !default; // Desktop
 $breakpoint-xlarge:                  1600px !default; // Large Screens
+
+$animation-duration:                 200ms !default;
+
+$standart:                           0.875rem !default;
+$small:                              0.7rem !default;
 
 $breakpoints: (
    s:           $breakpoint-small,
@@ -51,8 +58,12 @@ $spacing: (
    10:  10px,
    15:  15px,
    20:  20px,
+   25:  25px,
    30:  30px,
+   35:  35px,
    40:  40px,
+   45:  45px,
+   50:  50px,
 ) !default;
 
 $gaps: (
@@ -68,6 +79,29 @@ $width-values: (
    33:  33.33%,
    40:  40%,
    50:  50%,
+   70:  70%,
    75:  75%,
+   66:  66.66%,
    100: 100%,
+   xs:  150px,
+   s:   200px,
+   m:   300px,
+   l:   450px,
+) !default;
+
+$height-values: (
+   20:   20vh,
+   25:   25vh,
+   33:   33.33vh,
+   40:   40vh,
+   50:   50vh,
+   66:   66.66vh,
+   75:   75vh,
+   90:   90vh,
+   95:   95vh,
+   100:  100vh,
+   s:    200px,
+   m:    300px,
+   l:    450px,
+   full: 100%,
 ) !default;
