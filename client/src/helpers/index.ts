@@ -1,3 +1,4 @@
+import { ref } from 'vue'
 import { BetStatus, EventStatus } from '@/assets/ts/enums/status-enum'
 import type { NewBet } from '@/assets/ts/interfaces/bet-interface'
 import type { Event, Team, Teams } from '@/assets/ts/interfaces/event-interface'
@@ -85,4 +86,37 @@ function cutTeamCity(teamName: string, cities: string[]): string {
 
 export function changeState(value: boolean): boolean {
    return (value = !value)
+}
+
+export function changeSVG() {
+   const elements = document.querySelectorAll('[icon-size]') as NodeListOf<HTMLLIElement>
+   if (!elements || elements.length < 1) return
+   elements.forEach((el) => {
+      const ratio = Number(el.getAttribute('icon-size'))
+      const svg = el.children[0] as HTMLElement
+      setElementSize(svg, ratio)
+   })
+}
+
+function setElementSize(el: HTMLElement, ratio: number) {
+   const width = el.clientWidth
+   const height = el.clientHeight
+   el.setAttribute('width', `${width * ratio}`)
+   el.setAttribute('height', `${height * ratio}`)
+}
+
+export const isMobilePortrait = ref(false)
+export const isMobileLandscape = ref(false)
+export const getScreenWidth = () => {
+   const small = 640
+   const medium = 960
+   isMobilePortrait.value = window.innerWidth < small
+   isMobileLandscape.value = window.innerWidth < medium
+   // if (window.matchMedia('(orientation: portrait)').matches) {
+   //    console.log('portrait')
+   // }
+
+   // if (window.matchMedia('(orientation: landscape)').matches) {
+   //    console.log('landscape')
+   // }
 }

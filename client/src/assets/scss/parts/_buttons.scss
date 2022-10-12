@@ -52,9 +52,8 @@
 
    &#{&}-close {
       position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include display-flex;
+      @include justify-align-all(center);
       top: 0;
       right: 0;
       padding: 5px;
@@ -64,19 +63,16 @@
    }
 
     &#{&}-icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0;
+      @include display-flex;
+      @include justify-align-all(center);
       width: 40px;
       height: 40px;
+      padding: 0;
       border-radius: 50%;
 
-      &:hover {
-         color: rgba(255, 255, 255, 0.6);
-      }
-      &:active {
-         color: #ffffff;
+     
+      &.active {
+         box-shadow: 0 0px 10px rgba(255, 255, 255, 0.8);
       }
    }
 

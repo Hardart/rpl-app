@@ -1,27 +1,32 @@
 <script setup lang="ts">
+   import LayoutSection from './layouts/LayoutSection.vue'
+   import LayoutHeader from './layouts/LayoutHeader.vue'
    import ANav from './components/A-Nav.vue'
    import AAlert from './components/UI/A-Alert.vue'
-
    import { useAlertStore } from '@/stores/alerts'
+   import { getScreenWidth } from '@/helpers'
+   import LayoutMobileMenu from './layouts/LayoutMobileMenu.vue'
+
    const alertStore = useAlertStore()
+   getScreenWidth()
+   window.addEventListener('resize', getScreenWidth)
 </script>
 
 <template>
-   <ANav />
+   <LayoutHeader><ANav /></LayoutHeader>
    <Teleport to="body" v-if="alertStore.alerts.length > 0">
       <div class="alerts">
          <a-alert v-for="alert in alertStore.alerts" :alert="alert" @change="alertStore.delete" />
       </div>
    </Teleport>
-   <section class="section">
-      <div class="container">
-         <router-view v-slot="{ Component }">
-            <transition name="slide" mode="out-in">
-               <component :is="Component" />
-            </transition>
-         </router-view>
-      </div>
-   </section>
+   <LayoutSection>
+      <router-view v-slot="{ Component }">
+         <transition name="slide" mode="out-in">
+            <component :is="Component" />
+         </transition>
+      </router-view>
+   </LayoutSection>
+   <LayoutMobileMenu><ANav /></LayoutMobileMenu>
 </template>
 
 <style lang="scss">

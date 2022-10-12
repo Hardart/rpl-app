@@ -1,11 +1,5 @@
 <template>
-   <button 
-      class="btn" 
-      :class="[{ 'btn-icon': round == 'y' }, 
-      color ? `btn-${color}` : '']" 
-      v-html="icon + text" 
-      :style="roundBorder ? `border-radius: ${roundBorder}px` : ''"
-   />
+   <button class="btn" :class="[{ 'btn-icon': icon !== '' }, `btn-${color}`]" v-html="icon + text" />
 </template>
 
 <script lang="ts">
@@ -15,7 +9,7 @@
 </script>
 
 <script setup lang="ts">
-   type Colors = 'primary' | 'secondary' | 'warning' | 'success' | 'danger' | 'light' | 'dark' | 'transparent'
+   import type { Colors } from '@/assets/ts/types/elements'
    type BorderRound = 0 | 3 | 4 | 5 | 6 | 8 | 10 | 12
    type isRound = 'y' | 'n'
 
@@ -27,7 +21,7 @@
       roundBorder?: BorderRound
    }
    withDefaults(defineProps<PropsButton>(), {
-      color: 'primary',
+      color: 'default',
       text: '',
       icon: '',
       roundBorder: 0,

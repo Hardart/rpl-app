@@ -36,7 +36,7 @@
          password: authData.password,
          points: 0,
       }
-      console.log(player)
+
       usePlayerStore().registration(player)
    }
 </script>

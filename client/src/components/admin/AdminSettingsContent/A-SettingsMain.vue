@@ -1,7 +1,7 @@
 <template>
    <ASettingsTitle>{{ name }}</ASettingsTitle>
    <div class="select-form">
-      <ASelect :options="playerStore.players" @selected="selectPlayer" @input-value="onChangValue" v-model="inputValue" />
+      <ASelect :options="players" @selected="selectPlayer" @input-value="onChangValue" v-model="inputValue" />
       <div>
          <AButton @click="changeAdmin" color="success" text="Изменить" :round-border="5" :disabled="isDisable" />
       </div>
@@ -14,6 +14,7 @@
    import AButton from '@/components/UI/A-Button.vue'
    import { ref } from 'vue'
    import { useAlertStore, usePlayerStore } from '@/stores'
+
    defineProps<{
       name: string
    }>()

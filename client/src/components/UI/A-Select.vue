@@ -1,11 +1,11 @@
 <template>
    <div class="select">
       <div class="select__input">
-         <input @keyup.esc="escPress" @focus="changeState(true)" @input="filterList($event.target as EventTarget)" :value="modelValue" type="text" />
-         <button @click="changeState()" class="btn btn-warning" v-html="Icons['arrow-down']"></button>
+         <input ref="selectInput" @keyup.esc="escPress" @blur="escPres" @focus="changeState()" @input="filterList" :value="modelValue" type="text" />
+         <span v-html="Icons.arrows"></span>
       </div>
       <ul class="select__list" :class="{ active: isOpen }">
-         <li class="select__list-item" @click="selectPlayer(player.full_name)" v-for="player in options">{{ player.full_name }}</li>
+         <li class="select__list-item" @click.stop="selectPlayer(player.full_name)" v-for="player in options">{{ player.full_name }}</li>
       </ul>
    </div>
 </template>
@@ -19,42 +19,50 @@
 <script setup lang="ts">
    import type { Player } from '@/assets/ts/interfaces/player-interface'
    import Icons from '@/features/Icons'
-   import { ref } from 'vue'
-
+   import { ref, type Ref } from 'vue'
+   const selectInput: Ref<HTMLInputElement | null> = ref(null)
    const isOpen = ref(false)
    const changeState = (state: boolean = false) => {
-      if (!state) return (isOpen.value = !isOpen.value)
+      if (!state) {
+         isOpen.value = !isOpen.value
+         selectInput.value?.focus()
+         return
+      }
       isOpen.value = state
    }
-
    const props = defineProps<{
       options: Player[] | null
       modelValue: string
    }>()
-
    const emits = defineEmits<{
       (e: 'selected', player: string | undefined): void
       (e: 'inputValue', value: string): void
    }>()
-
    const selectPlayer = (playerName: string | undefined) => {
       emits('selected', playerName)
       isOpen.value = !isOpen.value
+      selectInput.value?.blur()
    }
-
-   const filterList = (e: EventTarget) => {
-      const inputValue = (e as HTMLInputElement).value
+   const filterList = () => {
+      const inputValue = (selectInput.value as HTMLInputElement).value
       emits('inputValue', inputValue)
    }
 
    const escPress = () => {
+      const input = selectInput.value as HTMLInputElement
       isOpen.value = false
+      input.blur()
+   }
+   const escPres = async () => {
+      const input = selectInput.value as HTMLInputElement
+      input.blur()
    }
 </script>
 
 <style lang="scss">
    .select {
-      width: 50%;
+      width: 250px;
+
       &__input {
          position: relative;
          border-radius: 10px;
@@ -63,14 +71,13 @@
          input {
             width: 100%;
             padding: 12px 12px 10px;
-            padding-right: 20px;
             outline: none;
             border: none;
             background-color: $muted;
             font-size: 1rem;
          }
 
-         button {
+         span {
             position: absolute;
             display: flex;
             align-items: center;
@@ -78,7 +85,7 @@
             bottom: 0;
             right: 0;
             padding: 0 10px;
-            cursor: pointer;
+            color: $disable;
          }
       }
 

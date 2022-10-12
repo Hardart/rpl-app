@@ -82,6 +82,11 @@ const router = createRouter({
          meta: { auth: true },
          component: Player,
       },
+      {
+         path: '/test-page',
+         name: 'test',
+         component: () => import('@/pages/PageForTests.vue'),
+      },
    ],
 })
 

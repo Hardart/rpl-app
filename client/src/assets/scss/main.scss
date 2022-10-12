@@ -6,7 +6,8 @@
 @import 'parts';
 @import 'utilites';
 @import 'custom';
-@import 'media';
+@import 'utils';
+
 
 
 
@@ -16,9 +17,3 @@
    stroke-width: 1.3px;
 }
 
-polygon,
-rect {
-   fill: currentColor;
-   stroke: currentColor;
-   stroke-width: 0.3px;
-}
