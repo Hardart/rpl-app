@@ -11,13 +11,13 @@ import '@/assets/scss/main.scss'
 const app = createApp(App)
 const store = createPinia()
 uiComponents.forEach((component) => {
-   app.component(component.name, component)
+  app.component(component.name, component)
 })
 directives.forEach((directive) => {
-   app.directive(directive.name, directive)
+  app.directive(directive.name, directive)
 })
 app.use(store).use(router)
 usePlayerStore().autoLogin()
 useEventsStore()
-   .loadPastRounds()
-   .then(() => app.mount('#app'))
+  .loadPastRounds()
+  .then(() => app.mount('#app'))

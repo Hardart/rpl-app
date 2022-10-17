@@ -30,7 +30,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 ### ALL BET
 GET  http://localhost:80/all-bets
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiYmV0cyI6WzIyNTIzNTUsMjI1MjM1NV0sInBvaW50cyI6MCwiaWF0IjoxNjYyODkwOTk1LCJleHAiOjE2NjU0ODI5OTV9.ZjkSGJoLnIWsiFi9tWVTzOrFXbxcezbHOth7Kgb8C_A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InN1cGVyLWFkbWluIiwiYmV0cyI6WzEzOTEwOTAsMTM5MTA4NiwxMzkxMDg5LDEzOTEwOTEsMTM5MTA4NywxMzkxMDg4LDEzOTEwOTIsMTM5MTA4NSwxMzkxMDk5LDEzOTEwOTcsMTM5MTA5NiwxMzkxMDk1LDEzOTEwOTMsMTM5MTA5NCwxMzkxMDk4LDEzOTExMDBdLCJwb2ludHMiOjYsImZ1bGxfbmFtZSI6ItCo0LDQutC40YDQvtCyINCQ0YDRgtC10LwiLCJpYXQiOjE2NjYwMTkxMjYsImV4cCI6MTY2ODYxMTEyNn0.EQsAc98_G35DYr0q4eGGfaEB5M8gR6CNgCYCj4aZzBM
 
 {
    "email": "admin@chatpnz.ru",
@@ -40,7 +40,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 ### GET PAST BETS
 GET  http://localhost:80/past?limit=8
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsIm5hbWUiOiLQpNCw0LrRg9C7IiwibGFzdF9uYW1lIjoi0KTQsNC60YPQu9C-0LIiLCJyb2xlIjoicGxheWVyIiwiYmV0cyI6WzIyNTIzNTUsMjI1MjM1NV0sInBvaW50cyI6MCwiaWF0IjoxNjYyODkwOTk1LCJleHAiOjE2NjU0ODI5OTV9.ZjkSGJoLnIWsiFi9tWVTzOrFXbxcezbHOth7Kgb8C_A
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNoYXRwbnoucnUiLCJuYW1lIjoi0JDRgNGC0LXQvCIsImxhc3RfbmFtZSI6ItCo0LDQutC40YDQvtCyIiwicm9sZSI6InN1cGVyLWFkbWluIiwiYmV0cyI6WzEzOTEwOTAsMTM5MTA4NiwxMzkxMDg5LDEzOTEwOTEsMTM5MTA4NywxMzkxMDg4LDEzOTEwOTIsMTM5MTA4NSwxMzkxMDk5LDEzOTEwOTcsMTM5MTA5NiwxMzkxMDk1LDEzOTEwOTMsMTM5MTA5NCwxMzkxMDk4LDEzOTExMDBdLCJwb2ludHMiOjYsImZ1bGxfbmFtZSI6ItCo0LDQutC40YDQvtCyINCQ0YDRgtC10LwiLCJpYXQiOjE2NjYwMTkxMjYsImV4cCI6MTY2ODYxMTEyNn0.EQsAc98_G35DYr0q4eGGfaEB5M8gR6CNgCYCj4aZzBM
 
 
 ### ALL PLAYERS
@@ -89,20 +89,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQ
 
 
 ### PLACEHOLDERs
-GET  https://jsonplaceholder.typicode.com/posts
+GET  https://jsonplaceholder.typicode.com/posts?_limit=8&_page=3
 
-
-### SOKOLOVA
-POST  http://pmsokolova.ru/post_check.php
-Content-Type: application/json
-
-[
-   {
-      "event_id": 2252355,
-      "home_score": 1,
-      "away_score": 0,
-      "status": false,
-      "winner_code": 0,
-      "bet_code": 2
-   }
-]
